@@ -1,6 +1,6 @@
 {
   "name": "#NowPlaying for Google Play Music",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "Share music playing on Google Play Music to SNS.",
   "content_scripts": [
     {
@@ -10,5 +10,8 @@
       "js": ["contentScript.js"]
     }
   ],
+  "icons": { 
+    "128": "icon_128.png" 
+  },
   "manifest_version": 2
 }
