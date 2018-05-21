@@ -6,6 +6,7 @@
     {
       "matches": ["https://play.google.com/*"],
       "run_at": "document_idle",
+      "css": ["contentStyle.css"],
       "js": ["contentScript.js"]
     }
   ],
