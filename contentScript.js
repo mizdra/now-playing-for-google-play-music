@@ -21,6 +21,7 @@ function insertShareButton() {
   const shareButton = document.createElement('paper-icon-button')
   shareButton.setAttribute('icon', 'social:share')
   shareButton.setAttribute('id', 'now-playing-for-google-play-music__share-button')
+  shareButton.setAttribute('title', 'Share music to SNS')
   shareButton.addEventListener('click', () => share())
 
   // 音量調整ボタンとキューボタンの間に挿入
