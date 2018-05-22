@@ -2,7 +2,7 @@
 
 
 <a href="#" title="#NowPlaying for Google Play Music">
-  <img alt="Logo"src="./icon_128.png?raw=true">
+  <img width="192px" alt="Logo"src="./logo.svg?raw=true">
 </a>
 
 # #NowPlaying for Google Play Music
