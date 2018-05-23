@@ -2,7 +2,8 @@
   "name": "#NowPlaying for Google Play Music",
   "version": "0.0.1",
   "description": "Share music playing on Google Play Music to SNS.",
-  "author": "mizdra <pp.mizdra@gmail.com>",
+  "short_name": "#NowPlaying",
+  "author": "mizdra",
   "homepage_url": "https://github.com/mizdra/now-playing-for-google-play-music",
   "content_scripts": [
     {
@@ -12,8 +13,10 @@
       "js": ["contentScript.js"]
     }
   ],
-  "icons": { 
-    "128": "logo-128.png" 
+  "icons": {
+    "48": "img/logo-48.png",
+    "96": "img/logo-96.png",
+    "128": "img/logo-128.png"
   },
   "manifest_version": 2
 }
