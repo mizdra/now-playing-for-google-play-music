@@ -28,4 +28,8 @@ function insertShareButton() {
   materialPlayerRightWrapper.insertBefore(shareButton, queue)
 }
 
-insertShareButton()
+// Firefox と Chrome で document_idle の挙動が異なるので,
+// window.onload で共有ボタンの挿入タイミングを制御
+window.addEventListener("load", () => {
+  insertShareButton()
+})
