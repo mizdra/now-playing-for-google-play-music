@@ -11,7 +11,7 @@
       "matches": ["https://play.google.com/*"],
       "run_at": "document_start",
       "css": ["content/index.css"],
-      "js": ["content/index.js"]
+      "js": ["lib.js", "content/index.js"]
     }
   ],
   "options_ui": {

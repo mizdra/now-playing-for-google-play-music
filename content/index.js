@@ -1,6 +1,3 @@
-const DEFAULT_TEMPLATE = '${title} / ${artist}'
-const DEFAULT_HASHTAGS = 'NowPlaying'
-
 // 再生中の曲を SNS で共有する
 async function share() {
   const title = document.querySelector('#currently-playing-title').textContent
@@ -28,30 +25,6 @@ function insertShareButton() {
 
   // 音量調整ボタンとキューボタンの間に挿入
   wrapper.insertBefore(shareButton, queue)
-}
-
-function getConfig() {
-  return new Promise((resolve) => {
-    chrome.storage.sync.get({
-      template: DEFAULT_TEMPLATE,
-      hashtags: DEFAULT_HASHTAGS,
-    }, (response) => {
-      resolve(response)
-    })
-  })
-}
-
-function renderText(template, title, artist, album) {
-  return template
-    .replace(/\${title}/g, title)
-    .replace(/\${artist}/g, artist)
-    .replace(/\${album}/g, album)
-}
-
-function renderURL(text, hashtags) {
-  const encodedText = encodeURI(text)
-  const encodedHashtags = encodeURI(hashtags)
-  return `https://twitter.com/intent/tweet?text=${encodedText}&hashtags=${encodedHashtags}`
 }
 
 // Firefox と Chrome で document_idle の挙動が異なるので,
