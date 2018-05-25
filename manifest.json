@@ -6,6 +6,12 @@
   "author": "mizdra",
   "homepage_url": "https://github.com/mizdra/now-playing-for-google-play-music",
   "permissions": ["storage"],
+  "applications": {
+    "gecko": {
+      "id": "now-playing-for-google-play-music@mizdra.net",
+      "strict_min_version": "53.0"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["https://play.google.com/*"],
