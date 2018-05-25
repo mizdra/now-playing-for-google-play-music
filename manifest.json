@@ -5,14 +5,19 @@
   "short_name": "#NowPlaying",
   "author": "mizdra",
   "homepage_url": "https://github.com/mizdra/now-playing-for-google-play-music",
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": ["https://play.google.com/*"],
       "run_at": "document_start",
-      "css": ["contentStyle.css"],
-      "js": ["contentScript.js"]
+      "css": ["content/index.css"],
+      "js": ["content/index.js"]
     }
   ],
+  "options_ui": {
+    "page": "option/index.html",
+    "open_in_tab": false
+  },
   "icons": {
     "48": "img/logo-48.png",
     "96": "img/logo-96.png",
