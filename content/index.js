@@ -30,6 +30,15 @@ function insertShareButton() {
   wrapper.insertBefore(shareButton, queue)
 }
 
-// Firefox と Chrome で document_idle の挙動が異なるので,
-// window.onload で共有ボタンの挿入タイミングを制御
-window.addEventListener('load', () => insertShareButton())
+// プレイヤーが挿入されるまで待機する
+async function waitPlayerInserted() {
+  // #material-player-right-wrapper がDOMに読み込まれたら, プレイヤーが挿入されたとして扱う
+  while (document.getElementById('material-player-right-wrapper') === null) {
+    await sleep(1000)
+  }
+}
+
+// DOMContentLoaded の後もDOMが動的に挿入されていくので,
+// プレイヤー が挿入されるまでポーリングして, 挿入された
+// タイミングで insertShareButton を呼び出す.
+waitPlayerInserted().then(insertShareButton)

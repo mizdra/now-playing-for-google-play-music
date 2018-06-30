@@ -33,3 +33,7 @@ function setConfig(config) {
     chrome.storage.sync.set(config, () => resolve())
   })
 }
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, 1000))
+}
