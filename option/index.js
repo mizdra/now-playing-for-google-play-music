@@ -19,19 +19,18 @@ window.addEventListener('load', () => {
   }
 
   async function saveOptions() {
-    const template = $template.value;
-    const hashtags = $hashtags.value;
+    const template = $template.value
+    const hashtags = $hashtags.value
     await setConfig({ template, hashtags })
     showActionMessage('Saved!')
   }
-  
+
   function showActionMessage(actionMessage) {
     $actionMessage.textContent = actionMessage
     $actionMessage.classList.add('active')
     setTimeout(() => {
-      $actionMessage.textContent = '';
+      $actionMessage.textContent = ''
       $actionMessage.classList.remove('active')
     }, 1000)
   }
-  
 })

@@ -12,15 +12,13 @@ Share music playing on Google Play Music to SNS.
 
 ## Supported SNS
 
-* Twitter
+- Twitter
 
 ## Supported browsers
 
-* Chrome: <https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk>
-* Firefox: <https://addons.mozilla.org/ja/firefox/addon/nowplaying-for-google-pla>
+- Chrome: <https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk>
+- Firefox: <https://addons.mozilla.org/ja/firefox/addon/nowplaying-for-google-pla>
 
 ## Screenshots
 
-![Screenshot 1](./img/screenshot1.png?raw=true 'Screenshot 1')
-![Screenshot 2](./img/screenshot2.png?raw=true 'Screenshot 2')
-![Screenshot 3](./img/screenshot3.png?raw=true 'Screenshot 3')
+![Screenshot 1](./img/screenshot1.png?raw=true 'Screenshot 1') ![Screenshot 2](./img/screenshot2.png?raw=true 'Screenshot 2') ![Screenshot 3](./img/screenshot3.png?raw=true 'Screenshot 3')

@@ -16,12 +16,15 @@ function renderURL(text, hashtags) {
 
 function getConfig() {
   return new Promise((resolve) => {
-    chrome.storage.sync.get({
-      template: DEFAULT_TEMPLATE,
-      hashtags: DEFAULT_HASHTAGS,
-    }, (response) => {
-      resolve(response)
-    })
+    chrome.storage.sync.get(
+      {
+        template: DEFAULT_TEMPLATE,
+        hashtags: DEFAULT_HASHTAGS,
+      },
+      (response) => {
+        resolve(response)
+      },
+    )
   })
 }
 

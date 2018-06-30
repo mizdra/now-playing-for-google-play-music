@@ -19,7 +19,10 @@ function insertShareButton() {
   // 共有ボタンを作成
   const shareButton = document.createElement('paper-icon-button')
   shareButton.setAttribute('icon', 'social:share')
-  shareButton.setAttribute('id', 'now-playing-for-google-play-music__share-button')
+  shareButton.setAttribute(
+    'id',
+    'now-playing-for-google-play-music__share-button',
+  )
   shareButton.setAttribute('title', 'Share music to SNS')
   shareButton.addEventListener('click', () => share())
 
@@ -29,4 +32,4 @@ function insertShareButton() {
 
 // Firefox と Chrome で document_idle の挙動が異なるので,
 // window.onload で共有ボタンの挿入タイミングを制御
-window.addEventListener("load", () => insertShareButton())
+window.addEventListener('load', () => insertShareButton())
