@@ -9,8 +9,8 @@ function renderText(template, title, artist, album) {
 }
 
 function renderURL(text, hashtags) {
-  const encodedText = encodeURI(text)
-  const encodedHashtags = encodeURI(hashtags)
+  const encodedText = encodeURIComponent(text)
+  const encodedHashtags = encodeURIComponent(hashtags)
   return `https://twitter.com/intent/tweet?text=${encodedText}&hashtags=${encodedHashtags}`
 }
 
