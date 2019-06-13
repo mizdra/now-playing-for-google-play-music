@@ -1,0 +1,9 @@
+{
+  "name": "now-playing-for-google-play-music",
+  "version": "1.0.1",
+  "description": "Share music playing on Google Play Music to SNS.",
+  "main": "index.js",
+  "repository": "https://github.com/mizdra/now-playing-for-google-play-music",
+  "author": "mizdra <pp.mizdra@gmail.com>",
+  "license": "MIT"
+}
