@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "https://github.com/mizdra/now-playing-for-google-play-music",
   "author": "mizdra <pp.mizdra@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier -l 'src/**/*.{js,css,html}'"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
 }
