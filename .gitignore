@@ -90,3 +90,5 @@ typings/
 .dynamodb/
 
 
+## User Config
+/dist.zip
