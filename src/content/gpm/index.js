@@ -34,7 +34,7 @@ function insertShareButton() {
   wrapper.insertBefore(shareButton, queue)
 }
 
-// 初期状態では再生回数が埋め込まれている DOM がまだレンダリングされないので,
+// 初期状態では再生回数が埋め込まれている DOM がまだレンダリングされてないので,
 // 一瞬だけ #queue-overlay を表示して強制的にレンダリングする
 function prerenderQueueOverlay() {
   const $queue = document.querySelector('#queue') // キューを表示するボタン
