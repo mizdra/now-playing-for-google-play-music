@@ -42,12 +42,21 @@ function prerenderQueueOverlay() {
   const clickEvent = document.createEvent('MouseEvents')
   clickEvent.initEvent('click', true, false)
 
+  $queueOverlay.addEventListener(
+    'iron-overlay-closed',
+    () => {
+      $queue.classList.remove('disable')
+      $queueOverlay.classList.remove('hidden')
+    },
+    { once: true },
+  )
+
   // #queue-overlay を不可視にしてから表示
-  $queueOverlay.style.display = 'none'
+  $queue.classList.add('disable')
+  $queueOverlay.classList.add('hidden')
   $queue.dispatchEvent(clickEvent)
   requestAnimationFrame(() => {
     $queue.dispatchEvent(clickEvent)
-    $queueOverlay.style.display = null
   })
 }
 
