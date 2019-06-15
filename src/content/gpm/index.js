@@ -17,26 +17,26 @@ async function share() {
 
 // DOM の構築完了を待ってから共有ボタンをプレイヤー (画面下部の操作バー) に挿入
 function insertShareButton() {
-  const wrapper = document.getElementById('material-player-right-wrapper') // 右下のツールボックス
-  const queue = document.getElementById('queue') // 次に再生される曲を表示するボタン
+  const $wrapper = document.getElementById('material-player-right-wrapper') // 右下のツールボックス
+  const $queue = document.getElementById('queue') // 次に再生される曲を表示するボタン
 
   // 共有ボタンを作成
-  const shareButton = document.createElement('paper-icon-button')
-  shareButton.setAttribute('icon', 'social:share')
-  shareButton.setAttribute(
+  const $shareButton = document.createElement('paper-icon-button')
+  $shareButton.setAttribute('icon', 'social:share')
+  $shareButton.setAttribute(
     'id',
     'now-playing-for-google-play-music__share-button',
   )
-  shareButton.setAttribute('title', 'Share music to SNS')
-  shareButton.addEventListener('click', () => share())
+  $shareButton.setAttribute('title', 'Share music to SNS')
+  $shareButton.addEventListener('click', () => share())
 
   // 音量調整ボタンとキューボタンの間に挿入
-  wrapper.insertBefore(shareButton, queue)
+  $wrapper.insertBefore($shareButton, $queue)
 }
 
 // 初期状態では再生回数が埋め込まれている DOM がまだレンダリングされてないので,
 // 一瞬だけ #queue-overlay を表示して強制的にレンダリングする
-function prerenderQueueOverlay() {
+function prerenderPlayCount() {
   const $queue = document.querySelector('#queue') // キューを表示するボタン
   const $queueOverlay = document.querySelector('#queue-overlay') // キュー
   const clickEvent = document.createEvent('MouseEvents')
@@ -73,5 +73,5 @@ async function waitPlayerInserted() {
 // タイミングで insertShareButton を呼び出す.
 waitPlayerInserted().then(() => {
   insertShareButton()
-  prerenderQueueOverlay()
+  prerenderPlayCount()
 })
