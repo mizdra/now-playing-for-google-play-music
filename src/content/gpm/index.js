@@ -3,9 +3,9 @@ async function share() {
   const title = document.querySelector('#currently-playing-title').textContent
   const artist = document.querySelector('#player-artist').textContent
   const album = document.querySelector('.player-album').textContent
-  const { template, hashtags } = await getConfig()
+  const { gpmTemplate, hashtags } = await getConfig()
 
-  const text = renderText(template, title, artist, album)
+  const text = renderText(gpmTemplate, title, artist, album)
   const url = renderURL(text, hashtags)
 
   window.open(url)

@@ -16,8 +16,14 @@
     {
       "matches": ["https://play.google.com/*"],
       "run_at": "document_start",
-      "css": ["src/content/index.css"],
-      "js": ["src/shared.js", "src/content/index.js"]
+      "css": ["src/content/gpm/index.css"],
+      "js": ["src/shared.js", "src/content/gpm/index.js"]
+    },
+    {
+      "matches": ["https://music.youtube.com/*"],
+      "run_at": "document_start",
+      "css": ["src/content/ytm/index.css"],
+      "js": ["src/shared.js", "src/content/ytm/index.js"]
     }
   ],
   "options_ui": {

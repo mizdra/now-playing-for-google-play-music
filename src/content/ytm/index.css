@@ -1,0 +1,7 @@
+/* 
+ * Youtube Music内で使われているシェアアイコンは向きを反転させているので,
+ * 拡張機能で追加したボタンもそれに合わせる
+ */
+#now-playing-for-google-play-music__share-button {
+  transform: scale(-1, 1);
+}

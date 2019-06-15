@@ -1,5 +1,6 @@
 window.addEventListener('load', () => {
-  const $template = document.getElementById('template')
+  const $gpmTemplate = document.getElementById('gpm-template')
+  const $ytmTemplate = document.getElementById('ytm-template')
   const $hashtags = document.getElementById('hashtags')
   const $save = document.getElementById('save')
   const $actionMessage = document.getElementById('action-message')
@@ -7,21 +8,24 @@ window.addEventListener('load', () => {
 
   function init() {
     restoreOptions()
-    $template.setAttribute('placeholder', DEFAULT_TEMPLATE)
+    $gpmTemplate.setAttribute('placeholder', DEFAULT_TEMPLATE)
+    $ytmTemplate.setAttribute('placeholder', DEFAULT_TEMPLATE)
     $hashtags.setAttribute('placeholder', DEFAULT_HASHTAGS)
     $save.addEventListener('click', () => saveOptions())
   }
 
   async function restoreOptions() {
-    const { template, hashtags } = await getConfig()
-    $template.value = template
+    const { gpmTemplate, ytmTemplate, hashtags } = await getConfig()
+    $gpmTemplate.value = gpmTemplate
+    $ytmTemplate.value = ytmTemplate
     $hashtags.value = hashtags
   }
 
   async function saveOptions() {
-    const template = $template.value
+    const gpmTemplate = $gpmTemplate.value
+    const ytmTemplate = $ytmTemplate.value
     const hashtags = $hashtags.value
-    await setConfig({ template, hashtags })
+    await setConfig({ gpmTemplate, ytmTemplate, hashtags })
     showActionMessage('Saved!')
   }
 
