@@ -1,6 +1,7 @@
-/* 再生中の曲が無い場合は共有ボタンを無効化 */
-#player:not(.active) #now-playing-for-google-play-music__share-button {
-  color: #e0e0e0;
-  pointer-events: none;
-  cursor: auto;
+/* 
+ * Youtube Music内で使われているシェアアイコンは向きを反転させているので,
+ * 拡張機能で追加したボタンもそれに合わせる
+ */
+#now-playing-for-google-play-music__share-button {
+  transform: scale(-1, 1);
 }
