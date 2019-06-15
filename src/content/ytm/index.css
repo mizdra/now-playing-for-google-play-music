@@ -1,0 +1,6 @@
+/* 再生中の曲が無い場合は共有ボタンを無効化 */
+#player:not(.active) #now-playing-for-google-play-music__share-button {
+  color: #e0e0e0;
+  pointer-events: none;
+  cursor: auto;
+}
