@@ -4,9 +4,9 @@ async function share() {
   const [artist = '', album = ''] = Array.from(
     document.querySelectorAll('ytmusic-player-bar .subtitle a'),
   ).map((a) => a.textContent)
-  const { template, hashtags } = await getConfig()
+  const { ytmTemplate, hashtags } = await getConfig()
 
-  const text = renderText(template, title, artist, album)
+  const text = renderText(ytmTemplate, title, artist, album)
   const url = renderURL(text, hashtags)
 
   window.open(url)
