@@ -28,7 +28,7 @@
   ],
   "options_ui": {
     "page": "src/option/index.html",
-    "open_in_tab": false
+    "open_in_tab": true
   },
   "icons": {
     "48": "src/img/logo-48.png",
