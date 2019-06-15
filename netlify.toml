@@ -1,0 +1,7 @@
+
+[build]
+  publish = "pwa"
+  [build.environment]
+    NODE_VERSION = "12.4.0"
+    NPM_VERSION = "6.9.0"
+    YARN_VERSION = "1.16.0"

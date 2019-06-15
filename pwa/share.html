@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>#NowPlaying for Google Play Music</title>
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+    />
+
+    <!-- For PWA -->
+    <noscript>
+      <p>
+        #NowPlaying for Google Play Music
+        を利用するにはJavaScriptを有効化する必要があります.
+        <a href="https://www.enable-javascript.com/ja/" target="_blank">
+          あなたのブラウザでJavaScriptを有効にする方法
+        </a>
+        を参照してください.
+      </p>
+    </noscript>
+    <meta name="theme-color" content="#e73b25" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="/img/logo.svg" />
+
+    <!-- Open Graph protocol -->
+    <meta property="og:title" content="#NowPlaying for Google Play Music" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://now-playing-for-gpm.mizdra.net" />
+    <meta
+      property="og:image"
+      content="https://now-playing-for-gpm.mizdra.net/img/promotion-440x280.png"
+    />
+    <meta
+      property="og:description"
+      content="Share music playing on Google Play Music / Youtube Music."
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site:id" content="@mizdra" />
+  </head>
+
+  <body>
+    <script type="module">
+      const DEFAULT_TEMPLATE = '${title} / ${artist}'
+      const DEFAULT_HASHTAGS = 'NowPlaying'
+
+      function renderText(template, title, artist, album, playCount) {
+        return template
+          .replace(/\${title}/g, title)
+          .replace(/\${artist}/g, artist)
+          .replace(/\${album}/g, album)
+          .replace(/\${playCount}/g, playCount)
+      }
+
+      function renderURL(text, hashtags) {
+        const encodedText = encodeURIComponent(text)
+        const encodedHashtags = encodeURIComponent(hashtags)
+        return `https://twitter.com/intent/tweet?text=${encodedText}&hashtags=${encodedHashtags}`
+      }
+
+      function parseVariables(searchStr) {
+        const params = new URLSearchParams(searchStr)
+        const titleParam = params.get('title')
+
+        // `titleParam` は "小倉唯のHoney Come!!をチェック" のような形式になっている
+        const [artist = '', title = ''] = titleParam
+          .slice(0, -5) // 末尾の "をチェック" を切り落とす
+          .split('の')
+        console.log(artist, title) // for Debug
+        return { artist, title }
+      }
+
+      const { artist, title } = parseVariables(location.search)
+      const text = renderText(DEFAULT_TEMPLATE, title, artist)
+      const url = renderURL(text, hashtags)
+
+      window.open(url)
+    </script>
+    <div id="app"></div>
+  </body>
+</html>
