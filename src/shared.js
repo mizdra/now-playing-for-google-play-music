@@ -1,11 +1,12 @@
 const DEFAULT_TEMPLATE = '${title} / ${artist}'
 const DEFAULT_HASHTAGS = 'NowPlaying'
 
-function renderText(template, title, artist, album) {
+function renderText(template, title, artist, album, playCount) {
   return template
     .replace(/\${title}/g, title)
     .replace(/\${artist}/g, artist)
     .replace(/\${album}/g, album)
+    .replace(/\${playCount}/g, playCount)
 }
 
 function renderURL(text, hashtags) {

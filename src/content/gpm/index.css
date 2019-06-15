@@ -4,3 +4,14 @@
   pointer-events: none;
   cursor: auto;
 }
+
+#player:not([style-scope]):not(.style-scope)
+  paper-icon-button[data-id='queue'].opened:not([style-scope]):not(.style-scope).disable {
+  color: #e0e0e0 !important;
+  pointer-events: none !important;
+  cursor: auto !important;
+}
+
+#queue-overlay.hidden {
+  display: none !important;
+}
