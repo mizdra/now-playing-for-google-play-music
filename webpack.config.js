@@ -18,7 +18,8 @@ const staticFileExtensions = [
 module.exports = {
   target: 'web',
   entry: {
-    'web/install-sw': [join(srcPath, 'web/install-sw.js')],
+    'web/index': [join(srcPath, 'web/index.js')],
+    'web/share': [join(srcPath, 'web/share.js')],
     'ext/js/options': [join(srcPath, 'ext/js/options.js')],
     'ext/js/gpm/content': [join(srcPath, 'ext/js/gpm/content.js')],
     'ext/js/ytm/content': [join(srcPath, 'ext/js/ytm/content.js')],

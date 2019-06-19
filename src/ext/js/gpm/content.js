@@ -1,3 +1,6 @@
+import { getConfig } from '../config'
+import { renderText, renderURL, sleep } from '../../../common/js/util'
+
 // 再生中の曲を SNS で共有する
 async function share() {
   const title = document.querySelector('#currently-playing-title').textContent

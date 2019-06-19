@@ -1,3 +1,6 @@
+import { getConfig, setConfig } from './config'
+import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/util'
+
 window.addEventListener('load', () => {
   const $gpmTemplate = document.getElementById('gpm-template')
   const $ytmTemplate = document.getElementById('ytm-template')

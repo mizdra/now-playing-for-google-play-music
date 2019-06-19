@@ -41,46 +41,10 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site:id" content="@mizdra" />
 
-    <script type="module" src="/install-sw.js"></script>
+    <script type="module" src="/share.js"></script>
   </head>
 
   <body>
-    <script type="module">
-      const DEFAULT_TEMPLATE = '${title} / ${artist}'
-      const DEFAULT_HASHTAGS = 'NowPlaying'
-
-      function renderText(template, title, artist, album, playCount) {
-        return template
-          .replace(/\${title}/g, title)
-          .replace(/\${artist}/g, artist)
-          .replace(/\${album}/g, album)
-          .replace(/\${playCount}/g, playCount)
-      }
-
-      function renderURL(text, hashtags) {
-        const encodedText = encodeURIComponent(text)
-        const encodedHashtags = encodeURIComponent(hashtags)
-        return `https://twitter.com/intent/tweet?text=${encodedText}&hashtags=${encodedHashtags}`
-      }
-
-      function parseVariables(searchStr) {
-        const params = new URLSearchParams(searchStr)
-        const titleParam = params.get('title')
-
-        // `titleParam` は "小倉唯のHoney Come!!をチェック" のような形式になっている
-        const [artist = '', title = ''] = titleParam
-          .slice(0, -5) // 末尾の "をチェック" を切り落とす
-          .split('の')
-        console.log(artist, title) // for Debug
-        return { artist, title }
-      }
-
-      const { artist, title } = parseVariables(location.search)
-      const text = renderText(DEFAULT_TEMPLATE, title, artist)
-      const url = renderURL(text, DEFAULT_HASHTAGS)
-
-      window.open(url)
-    </script>
     <div id="app"></div>
   </body>
 </html>

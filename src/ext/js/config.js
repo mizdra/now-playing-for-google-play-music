@@ -1,21 +1,6 @@
-const DEFAULT_TEMPLATE = '${title} / ${artist}'
-const DEFAULT_HASHTAGS = 'NowPlaying'
+import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/util'
 
-function renderText(template, title, artist, album, playCount) {
-  return template
-    .replace(/\${title}/g, title)
-    .replace(/\${artist}/g, artist)
-    .replace(/\${album}/g, album)
-    .replace(/\${playCount}/g, playCount)
-}
-
-function renderURL(text, hashtags) {
-  const encodedText = encodeURIComponent(text)
-  const encodedHashtags = encodeURIComponent(hashtags)
-  return `https://twitter.com/intent/tweet?text=${encodedText}&hashtags=${encodedHashtags}`
-}
-
-function getConfig() {
+export function getConfig() {
   return new Promise((resolve) => {
     chrome.storage.sync.get(
       {
@@ -37,7 +22,7 @@ function getConfig() {
   })
 }
 
-function setConfig(config) {
+export function setConfig(config) {
   // `gpmTemplate` は歴史的経緯により `template` という名前で保存されている
   const normalizedConfig = {
     template: config.gpmTemplate,
@@ -47,8 +32,4 @@ function setConfig(config) {
   return new Promise((resolve) => {
     chrome.storage.sync.set(normalizedConfig, () => resolve())
   })
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
 }
