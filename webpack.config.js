@@ -1,5 +1,7 @@
 const { join } = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { GenerateSW } = require('workbox-webpack-plugin')
 
 const rootPath = join(__dirname, '.')
 const srcPath = join(rootPath, 'src')
@@ -71,9 +73,21 @@ const webConfig = {
 
   resolve: {
     extensions: ['.js'],
-      },
+  },
 
   plugins: [
+    new HtmlWebpackPlugin({
+      filename: join(webDistPath, 'index.html'),
+      template: join(webSrcPath, 'template.html'),
+      chunks: ['index'],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      filename: join(webDistPath, 'share.html'),
+      template: join(webSrcPath, 'template.html'),
+      chunks: ['share'],
+      inject: true,
+    }),
     new CopyWebpackPlugin([
       {
         from: join(webSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
@@ -86,6 +100,9 @@ const webConfig = {
         context: commonSrcPath,
       },
     ]),
+    new GenerateSW({
+      swDest: 'sw.js',
+    }),
   ],
 }
 

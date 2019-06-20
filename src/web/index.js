@@ -1,1 +1,1 @@
-import './install-sw'
+import './initialize'

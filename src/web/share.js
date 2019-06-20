@@ -1,4 +1,4 @@
-import './install-sw'
+import './initialize'
 import {
   DEFAULT_TEMPLATE,
   DEFAULT_HASHTAGS,
