@@ -3,7 +3,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const rootPath = join(__dirname, '.')
 const srcPath = join(rootPath, 'src')
+const extSrcPath = join(srcPath, 'ext')
+const webSrcPath = join(srcPath, 'web')
+const commonSrcPath = join(srcPath, 'common')
 const distPath = join(rootPath, 'dist')
+const extDistPath = join(distPath, 'ext')
+const webDistPath = join(distPath, 'web')
 
 const staticFileExtensions = [
   'png',
@@ -15,17 +20,15 @@ const staticFileExtensions = [
   'webmanifest',
 ]
 
-module.exports = {
+const extConfig = {
   target: 'web',
   entry: {
-    'web/index': [join(srcPath, 'web/index.js')],
-    'web/share': [join(srcPath, 'web/share.js')],
-    'ext/js/options': [join(srcPath, 'ext/js/options.js')],
-    'ext/js/gpm/content': [join(srcPath, 'ext/js/gpm/content.js')],
-    'ext/js/ytm/content': [join(srcPath, 'ext/js/ytm/content.js')],
+    'js/options': [join(extSrcPath, 'js/options.js')],
+    'js/gpm/content': [join(extSrcPath, 'js/gpm/content.js')],
+    'js/ytm/content': [join(extSrcPath, 'js/ytm/content.js')],
   },
   output: {
-    path: distPath,
+    path: extDistPath,
     filename: '[name].js',
   },
   devtool: 'inline-source-map',
@@ -38,28 +41,52 @@ module.exports = {
 
   plugins: [
     new CopyWebpackPlugin([
-      // for web
       {
-        from: join(srcPath, `web/**/*.{${staticFileExtensions.join(',')}}`),
-        to: join(distPath, 'web'),
-        context: join(srcPath, 'web'),
+        from: join(extSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+        to: extDistPath,
+        context: extSrcPath,
       },
       {
-        from: join(srcPath, `common/**/*.{${staticFileExtensions.join(',')}}`),
-        to: join(distPath, 'web'),
-        context: join(srcPath, 'common'),
-      },
-      // for ext
-      {
-        from: join(srcPath, `ext/**/*.{${staticFileExtensions.join(',')}}`),
-        to: join(distPath, 'ext'),
-        context: join(srcPath, 'ext'),
-      },
-      {
-        from: join(srcPath, `common/**/*.{${staticFileExtensions.join(',')}}`),
-        to: join(distPath, 'ext'),
-        context: join(srcPath, 'common'),
+        from: join(commonSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+        to: extDistPath,
+        context: commonSrcPath,
       },
     ]),
   ],
 }
+
+const webConfig = {
+  target: 'web',
+  entry: {
+    index: [join(webSrcPath, 'index.js')],
+    share: [join(webSrcPath, 'share.js')],
+  },
+  output: {
+    path: webDistPath,
+    filename: '[name].js',
+  },
+  devtool: 'inline-source-map',
+
+  module: {},
+
+  resolve: {
+    extensions: ['.js'],
+      },
+
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: join(webSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+        to: webDistPath,
+        context: webSrcPath,
+      },
+      {
+        from: join(commonSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+        to: webDistPath,
+        context: commonSrcPath,
+      },
+    ]),
+  ],
+}
+
+module.exports = [extConfig, webConfig]
