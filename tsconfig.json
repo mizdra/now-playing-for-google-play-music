@@ -1,0 +1,35 @@
+{
+  "include": ["./src"],
+  "exclude": ["./.git", "./node_modules"],
+  "compilerOptions": {
+    /* Basic Options */
+    // "outDir": "./dist",
+    "target": "es2018",
+    "lib": ["es2018", "esnext.asynciterable", "dom"],
+    "declaration": false,
+
+    /* Extension */
+    "jsx": "react",
+    // "emitDecoratorMetadata": true,
+    // "experimentalDecorators": true,
+
+    /* Module Options */
+    "module": "es2015",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "allowJs": true,
+
+    /* Helper Options */
+    "noEmitHelpers": true,
+    "importHelpers": true,
+
+    /* Debug Options */
+    "sourceMap": true,
+    "pretty": true,
+    "locale": "ja"
+  }
+}

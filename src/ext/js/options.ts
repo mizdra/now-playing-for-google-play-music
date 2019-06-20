@@ -2,11 +2,15 @@ import { getConfig, setConfig } from './config'
 import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/util'
 
 window.addEventListener('load', () => {
-  const $gpmTemplate = document.getElementById('gpm-template')
-  const $ytmTemplate = document.getElementById('ytm-template')
-  const $hashtags = document.getElementById('hashtags')
-  const $save = document.getElementById('save')
-  const $actionMessage = document.getElementById('action-message')
+  const $gpmTemplate = document.querySelector<HTMLTextAreaElement>(
+    '#gpm-template',
+  )!
+  const $ytmTemplate = document.querySelector<HTMLTextAreaElement>(
+    '#ytm-template',
+  )!
+  const $hashtags = document.querySelector<HTMLInputElement>('#hashtags')!
+  const $save = document.querySelector<HTMLButtonElement>('#save')!
+  const $actionMessage = document.querySelector('#action-message')!
   init()
 
   function init() {
@@ -32,7 +36,7 @@ window.addEventListener('load', () => {
     showActionMessage('Saved!')
   }
 
-  function showActionMessage(actionMessage) {
+  function showActionMessage(actionMessage: string) {
     $actionMessage.textContent = actionMessage
     $actionMessage.classList.add('active')
     setTimeout(() => {

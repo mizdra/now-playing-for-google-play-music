@@ -25,7 +25,7 @@ const staticFileExtensions = [
 const extConfig = {
   target: 'web',
   entry: {
-    'js/options': [join(extSrcPath, 'js/options.js')],
+    'js/options': [join(extSrcPath, 'js/options.ts')],
     'js/gpm/content': [join(extSrcPath, 'js/gpm/content.js')],
     'js/ytm/content': [join(extSrcPath, 'js/ytm/content.js')],
   },
@@ -35,10 +35,21 @@ const extConfig = {
   },
   devtool: 'inline-source-map',
 
-  module: {},
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+          configFile: join(rootPath, 'tsconfig.json'),
+        },
+      },
+    ],
+  },
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
 
   plugins: [
