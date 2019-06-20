@@ -26,8 +26,8 @@ const extConfig = {
   target: 'web',
   entry: {
     'js/options': [join(extSrcPath, 'js/options.ts')],
-    'js/gpm/content': [join(extSrcPath, 'js/gpm/content.js')],
-    'js/ytm/content': [join(extSrcPath, 'js/ytm/content.js')],
+    'js/gpm/content': [join(extSrcPath, 'js/gpm/content.ts')],
+    'js/ytm/content': [join(extSrcPath, 'js/ytm/content.ts')],
   },
   output: {
     path: extDistPath,
