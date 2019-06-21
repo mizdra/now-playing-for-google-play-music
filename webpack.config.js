@@ -71,8 +71,8 @@ const extConfig = {
 const webConfig = {
   target: 'web',
   entry: {
-    index: [join(webSrcPath, 'index.js')],
-    share: [join(webSrcPath, 'share.js')],
+    index: [join(webSrcPath, 'index.ts')],
+    share: [join(webSrcPath, 'share.ts')],
   },
   output: {
     path: webDistPath,
@@ -80,10 +80,21 @@ const webConfig = {
   },
   devtool: 'inline-source-map',
 
-  module: {},
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+          configFile: join(rootPath, 'tsconfig.json'),
+        },
+      },
+    ],
+  },
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
 
   plugins: [

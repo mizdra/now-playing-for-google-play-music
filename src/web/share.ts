@@ -6,9 +6,9 @@ import {
   renderURL,
 } from '../common/js/util'
 
-function parseVariables(searchStr) {
+function parseVariables(searchStr: string) {
   const params = new URLSearchParams(searchStr)
-  const titleParam = params.get('title')
+  const titleParam = params.get('title') || ''
 
   // `titleParam` は "小倉唯のHoney Come!!をチェック" のような形式になっている
   const [artist = '', title = ''] = titleParam
