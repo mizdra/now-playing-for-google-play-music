@@ -21,7 +21,7 @@
 
     /* Strict Type-Checking Options */
     "strict": true,
-    "allowJs": true,
+    // "allowJs": true,
 
     /* Helper Options */
     "noEmitHelpers": true,
