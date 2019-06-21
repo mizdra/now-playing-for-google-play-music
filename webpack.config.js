@@ -71,8 +71,7 @@ const extConfig = {
 const webConfig = {
   target: 'web',
   entry: {
-    index: [join(webSrcPath, 'index.ts')],
-    share: [join(webSrcPath, 'share.ts')],
+    app: [join(webSrcPath, 'index.tsx')],
   },
   output: {
     path: webDistPath,
@@ -100,14 +99,7 @@ const webConfig = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: join(webDistPath, 'index.html'),
-      template: join(webSrcPath, 'template.html'),
-      chunks: ['index'],
-      inject: true,
-    }),
-    new HtmlWebpackPlugin({
-      filename: join(webDistPath, 'share.html'),
-      template: join(webSrcPath, 'template.html'),
-      chunks: ['share'],
+      template: join(webSrcPath, 'index.html'),
       inject: true,
     }),
     new CopyWebpackPlugin([

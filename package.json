@@ -23,6 +23,7 @@
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
-    "@types/chrome": "^0.0.86"
+    "@types/chrome": "^0.0.86",
+    "preact": "^10.0.0-beta.2"
   }
 }
