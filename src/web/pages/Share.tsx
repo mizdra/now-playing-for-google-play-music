@@ -79,17 +79,14 @@ export function Share() {
 
   if (patterns.length === 0) {
     return (
-      <div>
+      <div class="container" style={{ maxWidth: '80rem' }}>
         <p>共有に失敗しました. 共有の方法をもう一度見直して下さい.</p>
         <p>
           アプリの不具合だと思われる場合は, Twitterで開発者に報告できます.
           報告していただいた内容は今後のアプリの改善に役立てられます.
         </p>
         <div>
-          <a
-            class="twitter-mention-button"
-            href={renderBugReportURL({ config, patterns })}
-          >
+          <a class="button" href={renderBugReportURL({ config, patterns })}>
             Twitterで開発者に不具合を報告
           </a>
         </div>
@@ -99,9 +96,11 @@ export function Share() {
 
   if (patterns.length === 1) {
     return (
-      <div>
+      <div class="container" style={{ maxWidth: '80rem' }}>
         Twitterを開いています. 自動で開かない場合は以下のボタンを押して下さい.
-        <a href={patterns[0].url}>Twitterを開いて共有</a>
+        <a class="button" href={patterns[0].url}>
+          Twitterを開いて共有
+        </a>
       </div>
     )
   }
@@ -111,13 +110,15 @@ export function Share() {
       <p>
         曲情報の自動判別に失敗しました. 正しい曲情報を以下から選択して下さい.
       </p>
-      <ul>
-        {patterns.map((pattern) => (
+      <ol class="pattern-list">
+        {patterns.map((pattern, index) => (
           <li>
-            <a href={pattern.url}>{`${pattern.title} / ${pattern.artist}`}</a>
+            <a href={pattern.url}>{`${index + 1}. ${pattern.title} / ${
+              pattern.artist
+            }`}</a>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   )
 }

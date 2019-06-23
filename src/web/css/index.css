@@ -1,0 +1,25 @@
+body {
+  margin: 25px 10px;
+}
+
+.pattern-list {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  list-style: none;
+}
+.pattern-list li {
+  border: solid #ddd;
+  border-width: 1px 1px 0;
+  margin: 0;
+}
+.pattern-list li:last-child {
+  border-bottom-width: 1px;
+}
+.pattern-list li:hover > a {
+  background: #eee;
+  color: #6760c5;
+}
+.pattern-list li > a {
+  display: block;
+  padding: 1em;
+  font-size: large;
+}
