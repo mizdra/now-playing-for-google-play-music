@@ -34,6 +34,11 @@ const webConfig = merge(baseConfig, {
         context: webSrcPath,
       },
       {
+        from: join(webSrcPath, `_redirects`),
+        to: webDistPath,
+        context: webSrcPath,
+      },
+      {
         from: join(commonSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
         to: webDistPath,
         context: commonSrcPath,
