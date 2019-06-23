@@ -1,3 +1,5 @@
+import { Config } from '../../ext/js/config'
+
 export const DEFAULT_TEMPLATE = '${title} / ${artist}'
 export const DEFAULT_HASHTAGS = 'NowPlaying'
 export type MusicInfo = {
@@ -19,6 +21,19 @@ export function renderURL(text: string, hashtags: string) {
   const encodedText = encodeURIComponent(text)
   const encodedHashtags = encodeURIComponent(hashtags)
   return `https://twitter.com/intent/tweet?text=${encodedText}&hashtags=${encodedHashtags}`
+}
+
+export function renderBugReportURL(debugInfo: any) {
+  const text = `
+症状: <ここに症状を記載して下さい>
+デバッグ情報: ${JSON.stringify(debugInfo)}
+  `.trimRight()
+
+  const url = `https://twitter.com/intent/tweet?screen_name=mizdra&hashtags=now-playing-for-gpm&text=${encodeURIComponent(
+    text,
+  )}`
+
+  return url
 }
 
 export function sleep(ms: number) {

@@ -5,7 +5,9 @@ import {
   DEFAULT_HASHTAGS,
   renderText,
   renderURL,
+  renderBugReportURL,
 } from '../../common/js/util'
+import { Config } from '../../ext/js/config'
 
 type MusicInfo = { artist: string; title: string }
 
@@ -61,9 +63,14 @@ function useRenderedMusicInfoPatterns(
 }
 
 export function Share() {
+  const config: Config = {
+    gpmTemplate: DEFAULT_TEMPLATE,
+    ytmTemplate: DEFAULT_TEMPLATE,
+    hashtags: DEFAULT_HASHTAGS,
+  }
   const patterns = useRenderedMusicInfoPatterns(
-    DEFAULT_TEMPLATE,
-    DEFAULT_HASHTAGS,
+    config.gpmTemplate,
+    config.hashtags,
   )
 
   useEffect(() => {
@@ -81,9 +88,7 @@ export function Share() {
         <div>
           <a
             class="twitter-mention-button"
-            href={`https://twitter.com/intent/tweet?screen_name=mizdra&text=${encodeURIComponent(
-              '不具合の詳細を入力して下さい.',
-            )}`}
+            href={renderBugReportURL({ config, patterns })}
           >
             Twitterで開発者に不具合を報告
           </a>
