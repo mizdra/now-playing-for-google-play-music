@@ -1,13 +1,7 @@
 import { h } from 'preact'
 import { useEffect, useMemo } from 'preact/hooks'
-import {
-  DEFAULT_TEMPLATE,
-  DEFAULT_HASHTAGS,
-  renderText,
-  renderURL,
-  renderBugReportURL,
-} from '../../common/js/util'
-import { Config } from '../../ext/js/config'
+import { renderText, renderURL, renderBugReportURL } from '../../common/js/util'
+import { getConfig } from '../js/config'
 
 type MusicInfo = { artist: string; title: string }
 
@@ -63,11 +57,7 @@ function useRenderedMusicInfoPatterns(
 }
 
 export function Share() {
-  const config: Config = {
-    gpmTemplate: DEFAULT_TEMPLATE,
-    ytmTemplate: DEFAULT_TEMPLATE,
-    hashtags: DEFAULT_HASHTAGS,
-  }
+  const config = getConfig()
   const patterns = useRenderedMusicInfoPatterns(
     config.gpmTemplate,
     config.hashtags,
@@ -113,9 +103,12 @@ export function Share() {
       <ol class="pattern-list">
         {patterns.map((pattern, index) => (
           <li>
-            <a href={pattern.url}>{`${index + 1}. ${pattern.title} / ${
-              pattern.artist
-            }`}</a>
+            <a class="pattern-link" href={pattern.url}>
+              <div class="pattern-link-text">
+                <div class="pattern-index">{`${index + 1}. `}</div>
+                <div>{pattern.text}</div>
+              </div>
+            </a>
           </li>
         ))}
       </ol>

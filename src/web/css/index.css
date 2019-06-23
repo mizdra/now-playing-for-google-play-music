@@ -72,12 +72,18 @@ fieldset.ytm > legend {
 .pattern-list li:last-child {
   border-bottom-width: 1px;
 }
-.pattern-list li:hover > a {
+.pattern-list li:hover .pattern-link {
   background: #eee;
   color: #6760c5;
 }
-.pattern-list li > a {
+.pattern-list li .pattern-link {
   display: block;
   padding: 1em;
   font-size: large;
+}
+.pattern-list li .pattern-link-text {
+  display: flex;
+}
+.pattern-list li .pattern-index {
+  padding-right: 1em;
 }
