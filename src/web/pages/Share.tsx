@@ -107,7 +107,7 @@ export function Share() {
   }
 
   return (
-    <div>
+    <div class="container" style={{ maxWidth: '80rem' }}>
       <p>
         曲情報の自動判別に失敗しました. 正しい曲情報を以下から選択して下さい.
       </p>
