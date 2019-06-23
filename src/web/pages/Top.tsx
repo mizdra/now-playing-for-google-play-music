@@ -1,11 +1,37 @@
 import { h } from 'preact'
+import { useState, useEffect } from 'preact/hooks'
+
+function useInstalled() {
+  const [installed, setInstalled] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener(
+      'beforeinstallprompt',
+      async () => {
+        if (!('getInstalledRelatedApps' in navigator)) return
+        const relatedApps = await (navigator as any).getInstalledRelatedApps()
+        if (relatedApps.length > 0) setInstalled(true)
+      },
+      { once: true },
+    )
+  }, [])
+
+  return installed
+}
 
 export function Top() {
+  const installed = useInstalled()
+
   return (
     <div>
       <div class="welcome">
         <img src="/img/logo.svg" alt="アプリのロゴ" />
         <h1>#NowListening for Google Play Music</h1>
+        {installed && (
+          <a class="button" href="/config">
+            設定を変更
+          </a>
+        )}
       </div>
       <div class="container">
         <main>
