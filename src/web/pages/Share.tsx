@@ -1,24 +1,26 @@
 import { h } from 'preact'
-import { useEffect } from 'preact/hooks'
+import { useEffect, useMemo } from 'preact/hooks'
 import {
   DEFAULT_TEMPLATE,
   DEFAULT_HASHTAGS,
   renderText,
   renderURL,
 } from '../../common/js/util'
+import { Config } from '../../ext/js/config'
 
-type ArtistWithTitle = { artist: string; title: string }
+type MusicInfo = { artist: string; title: string }
 
-// Web Share Target API の title パラメータをパースし, アーティスト名と曲名の組に変換する.
-// 可能性のある組が複数通りあるならその全てからなるリストを, 1つもない場合は空のリストを返す.
-function parseTitle(titleParam: string | null): ArtistWithTitle[] {
+// Web Share Target API の title パラメータをパースし, 曲情報に変換する.
+// 曲情報に複数通りの可能性があるならその全てからなるリストを, 1つもない場合は空のリストを返す.
+function parseTitle(titleParam: string | null): MusicInfo[] {
+  // `titleParam` は "小倉唯のHoney Come!!をチェック" のような形式になっている
   if (titleParam === null || !titleParam.endsWith('をチェック')) return []
 
   const tailedTitle = titleParam.slice(0, -5)
 
   // 'の' を基準にアーティスト名と曲名を分ける.
   // 'の' が複数ある場合はその全通りを返す.
-  function separateIntoVariables(fromIndex: number): ArtistWithTitle[] {
+  function splitTailedTitle(fromIndex: number): MusicInfo[] {
     const index = tailedTitle.indexOf('の', fromIndex)
     if (index === -1) return []
     return [
@@ -26,29 +28,50 @@ function parseTitle(titleParam: string | null): ArtistWithTitle[] {
         artist: tailedTitle.slice(0, index),
         title: tailedTitle.slice(index + 1),
       },
-      ...separateIntoVariables(index + 1),
+      ...splitTailedTitle(index + 1),
     ]
   }
 
-  // `titleParam` は "小倉唯のHoney Come!!をチェック" のような形式になっている
-  return separateIntoVariables(0)
+  return splitTailedTitle(0)
+}
+
+type RenderedMusicInfo = MusicInfo & {
+  text: string
+  url: string
+}
+
+function useRenderedMusicInfoPatterns(config: Config): RenderedMusicInfo[] {
+  const titleParam = new URLSearchParams(location.search).get('title')
+
+  const patterns = useMemo(() => {
+    return parseTitle(titleParam).map((variable) => {
+      const text = renderText(
+        config.gpmTemplate,
+        variable.title,
+        variable.artist,
+      )
+      const url = renderURL(text, config.hashtags)
+      return {
+        ...variable,
+        text,
+        url,
+      }
+    })
+  }, [config, titleParam])
+
+  return patterns
 }
 
 export function Share() {
-  const titleParam = new URLSearchParams(location.search).get('title')
-  const patterns = parseTitle(titleParam).map((variable) => {
-    const text = renderText(DEFAULT_TEMPLATE, variable.title, variable.artist)
-    const url = renderURL(text, DEFAULT_HASHTAGS)
-    return {
-      ...variable,
-      text,
-      url,
-    }
+  const patterns = useRenderedMusicInfoPatterns({
+    gpmTemplate: DEFAULT_TEMPLATE,
+    ytmTemplate: DEFAULT_TEMPLATE,
+    hashtags: DEFAULT_HASHTAGS,
   })
 
   useEffect(() => {
     if (patterns.length === 1) location.href = patterns[0].url
-  }, [titleParam])
+  }, [patterns])
 
   if (patterns.length === 0) {
     return (
