@@ -7,8 +7,10 @@
   "author": "mizdra <pp.mizdra@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack --watch --mode development",
+    "build:ext": "webpack --config webpack.ext.js --mode production",
+    "build:dev": "webpack --config webpack.web.js --mode production",
+    "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
+    "dev:web": "webpack-dev-server --config webpack.web.js --mode development",
     "typecheck": "tsc -p . --noEmit",
     "format": "prettier -l 'src/**/*.{js,css,html}'"
   },
@@ -20,6 +22,8 @@
     "typescript": "^3.5.2",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1",
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
