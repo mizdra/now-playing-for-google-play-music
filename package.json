@@ -7,8 +7,10 @@
   "author": "mizdra <pp.mizdra@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "run-p -l build:*",
     "build:ext": "webpack --config webpack.ext.js --mode production",
     "build:dev": "webpack --config webpack.web.js --mode production",
+    "dev": "run-p -l dev:*",
     "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
     "dev:web": "webpack-dev-server --config webpack.web.js --mode development",
     "typecheck": "tsc -p . --noEmit",
@@ -17,6 +19,7 @@
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.3",
     "html-webpack-plugin": "^3.2.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "ts-loader": "^6.0.3",
     "typescript": "^3.5.2",

@@ -1,5 +1,6 @@
 
 [build]
+  command = "yarn run build"
   publish = "dist/web"
   [build.environment]
     NODE_VERSION = "12.4.0"
