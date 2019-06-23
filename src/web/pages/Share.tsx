@@ -6,7 +6,6 @@ import {
   renderText,
   renderURL,
 } from '../../common/js/util'
-import { Config } from '../../ext/js/config'
 
 type MusicInfo = { artist: string; title: string }
 
@@ -40,30 +39,32 @@ type RenderedMusicInfo = MusicInfo & {
   url: string
 }
 
-function useRenderedMusicInfoPatterns(config: Config): RenderedMusicInfo[] {
+function useRenderedMusicInfoPatterns(
+  template: string,
+  hashtags: string,
+): RenderedMusicInfo[] {
   const titleParam = new URLSearchParams(location.search).get('title')
 
   const patterns = useMemo(() => {
     return parseTitle(titleParam).map((musicInfo) => {
-      const text = renderText(config.gpmTemplate, musicInfo)
-      const url = renderURL(text, config.hashtags)
+      const text = renderText(template, musicInfo)
+      const url = renderURL(text, hashtags)
       return {
         ...musicInfo,
         text,
         url,
       }
     })
-  }, [config, titleParam])
+  }, [template, hashtags, titleParam])
 
   return patterns
 }
 
 export function Share() {
-  const patterns = useRenderedMusicInfoPatterns({
-    gpmTemplate: DEFAULT_TEMPLATE,
-    ytmTemplate: DEFAULT_TEMPLATE,
-    hashtags: DEFAULT_HASHTAGS,
-  })
+  const patterns = useRenderedMusicInfoPatterns(
+    DEFAULT_TEMPLATE,
+    DEFAULT_HASHTAGS,
+  )
 
   useEffect(() => {
     if (patterns.length === 1) location.href = patterns[0].url
