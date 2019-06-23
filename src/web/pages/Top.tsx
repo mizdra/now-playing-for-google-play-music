@@ -1,21 +1,11 @@
 import { h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
+import { useMemo } from 'preact/hooks'
 
 function useInstalled() {
-  const [installed, setInstalled] = useState(false)
-
-  useEffect(() => {
-    window.addEventListener(
-      'beforeinstallprompt',
-      async () => {
-        if (!('getInstalledRelatedApps' in navigator)) return
-        const relatedApps = await (navigator as any).getInstalledRelatedApps()
-        if (relatedApps.length > 0) setInstalled(true)
-      },
-      { once: true },
-    )
-  }, [])
-
+  const installed = useMemo(() => {
+    const params = new URLSearchParams(location.search)
+    return params.get('utm_source') === 'homescreen'
+  }, [location.search])
   return installed
 }
 
