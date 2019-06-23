@@ -12,7 +12,7 @@ async function share() {
     )!.textContent || '0'
   const { gpmTemplate, hashtags } = await getConfig()
 
-  const text = renderText(gpmTemplate, title, artist, album, playCount)
+  const text = renderText(gpmTemplate, { title, artist, album, playCount })
   const url = renderURL(text, hashtags)
 
   window.open(url)

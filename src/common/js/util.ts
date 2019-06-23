@@ -1,18 +1,18 @@
 export const DEFAULT_TEMPLATE = '${title} / ${artist}'
 export const DEFAULT_HASHTAGS = 'NowPlaying'
+export type MusicInfo = {
+  title?: string | null
+  artist?: string | null
+  album?: string | null
+  playCount?: string | null
+}
 
-export function renderText(
-  template: string,
-  title?: string | null,
-  artist?: string | null,
-  album?: string | null,
-  playCount?: string | null,
-) {
+export function renderText(template: string, musicInfo: MusicInfo) {
   return template
-    .replace(/\${title}/g, title || '')
-    .replace(/\${artist}/g, artist || '')
-    .replace(/\${album}/g, album || '')
-    .replace(/\${playCount}/g, playCount || '')
+    .replace(/\${title}/g, musicInfo.title || '')
+    .replace(/\${artist}/g, musicInfo.artist || '')
+    .replace(/\${album}/g, musicInfo.album || '')
+    .replace(/\${playCount}/g, musicInfo.playCount || '')
 }
 
 export function renderURL(text: string, hashtags: string) {

@@ -19,7 +19,7 @@ function parseVariables(searchStr: string) {
 }
 
 const { artist, title } = parseVariables(location.search)
-const text = renderText(DEFAULT_TEMPLATE, title, artist)
+const text = renderText(DEFAULT_TEMPLATE, { title, artist })
 const url = renderURL(text, DEFAULT_HASHTAGS)
 
 window.open(url)

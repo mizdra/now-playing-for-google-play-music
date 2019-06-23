@@ -9,7 +9,7 @@ async function share() {
   ).map((a) => a.textContent)
   const { ytmTemplate, hashtags } = await getConfig()
 
-  const text = renderText(ytmTemplate, title, artist, album)
+  const text = renderText(ytmTemplate, { title, artist, album })
   const url = renderURL(text, hashtags)
 
   window.open(url)

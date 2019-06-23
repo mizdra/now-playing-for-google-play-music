@@ -44,15 +44,11 @@ function useRenderedMusicInfoPatterns(config: Config): RenderedMusicInfo[] {
   const titleParam = new URLSearchParams(location.search).get('title')
 
   const patterns = useMemo(() => {
-    return parseTitle(titleParam).map((variable) => {
-      const text = renderText(
-        config.gpmTemplate,
-        variable.title,
-        variable.artist,
-      )
+    return parseTitle(titleParam).map((musicInfo) => {
+      const text = renderText(config.gpmTemplate, musicInfo)
       const url = renderURL(text, config.hashtags)
       return {
-        ...variable,
+        ...musicInfo,
         text,
         url,
       }
