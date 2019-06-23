@@ -1,5 +1,29 @@
+html,
 body {
-  margin: 25px 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.icon {
+  width: 1em;
+  vertical-align: middle;
+}
+
+.container {
+  padding: 25px;
+}
+
+.welcome {
+  padding: 20px;
+  text-align: center;
+  /* background: #1d1a1f; */
+  border-bottom: 1px solid #ddd;
+  color: #fff;
+  background: radial-gradient(
+    circle farthest-corner at center,
+    #ff6565 40px,
+    #e67575 350px
+  );
 }
 
 .pattern-list {
