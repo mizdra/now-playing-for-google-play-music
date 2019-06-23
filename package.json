@@ -7,9 +7,30 @@
   "author": "mizdra <pp.mizdra@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "run-p -l build:*",
+    "build:ext": "webpack --config webpack.ext.js --mode production",
+    "build:dev": "webpack --config webpack.web.js --mode production",
+    "dev": "run-p -l dev:*",
+    "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
+    "dev:web": "webpack-dev-server --config webpack.web.js --mode development",
+    "typecheck": "tsc -p . --noEmit",
     "format": "prettier -l 'src/**/*.{js,css,html}'"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "copy-webpack-plugin": "^5.0.3",
+    "html-webpack-plugin": "^3.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "ts-loader": "^6.0.3",
+    "typescript": "^3.5.2",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1",
+    "workbox-webpack-plugin": "^4.3.1"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.86",
+    "preact": "^10.0.0-beta.2"
   }
 }

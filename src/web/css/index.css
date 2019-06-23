@@ -1,0 +1,89 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page-title {
+  border-bottom: 1px solid #ddd;
+  padding: 0 10px 5px;
+}
+
+.action-message {
+  margin-left: 5px;
+  color: #2196f3;
+}
+
+.icon {
+  width: 1em;
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin-bottom: 2.5rem;
+}
+fieldset.gpm {
+  border-color: #ff6c6c;
+}
+fieldset.gpm > legend {
+  color: #ff6c6c;
+}
+fieldset.ytm {
+  border-color: #ff0e0e;
+}
+fieldset.ytm > legend {
+  color: #ff0e0e;
+}
+
+#action-message {
+  margin-left: 5px;
+  color: #2196f3;
+}
+
+.container {
+  padding: 25px;
+}
+
+.welcome {
+  padding: 20px;
+  text-align: center;
+  /* background: #1d1a1f; */
+  border-bottom: 1px solid #ddd;
+  color: #fff;
+  background: radial-gradient(
+    circle farthest-corner at center,
+    #ff6565 40px,
+    #e67575 350px
+  );
+}
+
+.pattern-list {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  list-style: none;
+}
+.pattern-list li {
+  border: solid #ddd;
+  border-width: 1px 1px 0;
+  margin: 0;
+}
+.pattern-list li:last-child {
+  border-bottom-width: 1px;
+}
+.pattern-list li:hover .pattern-link {
+  background: #eee;
+  color: #6760c5;
+}
+.pattern-list li .pattern-link {
+  display: block;
+  padding: 1em;
+  font-size: large;
+}
+.pattern-list li .pattern-link-text {
+  display: flex;
+}
+.pattern-list li .pattern-index {
+  padding-right: 1em;
+}

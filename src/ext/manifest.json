@@ -16,24 +16,24 @@
     {
       "matches": ["https://play.google.com/*"],
       "run_at": "document_start",
-      "css": ["src/content/gpm/index.css"],
-      "js": ["src/shared.js", "src/content/gpm/index.js"]
+      "css": ["./css/gpm/content.css"],
+      "js": ["./js/gpm/content.js"]
     },
     {
       "matches": ["https://music.youtube.com/*"],
       "run_at": "document_start",
-      "css": ["src/content/ytm/index.css"],
-      "js": ["src/shared.js", "src/content/ytm/index.js"]
+      "css": ["./css/ytm/content.css"],
+      "js": ["./js/ytm/content.js"]
     }
   ],
   "options_ui": {
-    "page": "src/option/index.html",
+    "page": "./options.html",
     "open_in_tab": true
   },
   "icons": {
-    "48": "img/logo-48.png",
-    "96": "img/logo-96.png",
-    "128": "img/logo-128.png"
+    "48": "./img/logo-48.png",
+    "96": "./img/logo-96.png",
+    "128": "./img/logo-128.png"
   },
   "manifest_version": 2
 }

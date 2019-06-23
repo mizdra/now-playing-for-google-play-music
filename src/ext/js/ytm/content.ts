@@ -1,12 +1,15 @@
+import { getConfig } from '../config'
+import { renderText, renderURL, sleep } from '../../../common/js/util'
+
 // 再生中の曲を SNS で共有する
 async function share() {
-  const title = document.querySelector('ytmusic-player-bar .title').textContent
+  const title = document.querySelector('ytmusic-player-bar .title')!.textContent
   const [artist = '', album = ''] = Array.from(
     document.querySelectorAll('ytmusic-player-bar .subtitle a'),
   ).map((a) => a.textContent)
   const { ytmTemplate, hashtags } = await getConfig()
 
-  const text = renderText(ytmTemplate, title, artist, album)
+  const text = renderText(ytmTemplate, { title, artist, album })
   const url = renderURL(text, hashtags)
 
   window.open(url)
@@ -16,7 +19,7 @@ async function share() {
 function insertShareButton() {
   const rightControlsButtons = document.querySelector(
     'ytmusic-player-bar .right-controls-buttons',
-  ) // 右下のツールボックス
+  )! // 右下のツールボックス
 
   // 共有ボタンを作成
   const shareButton = document.createElement('paper-icon-button')

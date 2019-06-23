@@ -13,7 +13,7 @@ $ yarn version --new-version $NEXT_VERSION
 $ git push --tags
 
 ## Generate zip
-$ zip -r dist.zip src
+$ zip -r ext.zip dist/ext
 
 ## Publish zip
 $ open https://chrome.google.com/webstore/devconsole
