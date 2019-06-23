@@ -1,6 +1,6 @@
 
 [build]
-  publish = "pwa"
+  publish = "dist/web"
   [build.environment]
     NODE_VERSION = "12.4.0"
     NPM_VERSION = "6.9.0"
