@@ -46,6 +46,7 @@ const webConfig = merge(baseConfig, {
     ]),
     new GenerateSW({
       swDest: 'sw.js',
+      exclude: [/_redirects$/],
     }),
   ],
 
