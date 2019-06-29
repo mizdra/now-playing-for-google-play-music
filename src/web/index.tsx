@@ -1,4 +1,4 @@
-import './initialize'
+import './js/initialize'
 import { h, render } from 'preact'
 import { App } from './App'
 

@@ -1,6 +1,6 @@
 import { h, render } from 'preact'
 import { loadConfig, saveConfig } from './repository'
-import { ConfigForm } from '../../common/js/organisms/ConfigForm'
+import { ConfigForm } from '../../common/organisms/ConfigForm'
 import { useState, useEffect } from 'preact/hooks'
 import { Config } from '../../common/js/config'
 
