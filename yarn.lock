@@ -2635,6 +2635,13 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
+milligram@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/milligram/-/milligram-1.3.0.tgz#a5d980ef8eaf79337c96a8d7c7e176764931042c"
+  integrity sha1-pdmA746veTN8lqjXx+F2dkkxBCw=
+  dependencies:
+    normalize.css "~5.0.0"
+
 mime-db@1.40.0, "mime-db@>= 1.40.0 < 2":
   version "1.40.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.40.0.tgz#a65057e998db090f732a68f6c276d387d4126c32"
@@ -2907,6 +2914,11 @@ normalize-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
+
+normalize.css@~5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-5.0.0.tgz#7cec875ce8178a5333c4de80b68ea9c18b9d7c37"
+  integrity sha1-fOyHXOgXilMzxN6Ato6pwYudfDc=
 
 npm-bundled@^1.0.1:
   version "1.0.6"

@@ -1,4 +1,4 @@
-@import '../../common/css/milligram.min.css';
+@import '~milligram/dist/milligram.css';
 
 body {
   padding: 10px;
