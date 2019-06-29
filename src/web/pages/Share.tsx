@@ -2,6 +2,7 @@ import { h } from 'preact'
 import { useEffect, useMemo } from 'preact/hooks'
 import { renderText, renderURL, renderBugReportURL } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
+import { Container } from '../templates/Container'
 
 type MusicInfo = { artist: string; title: string }
 
@@ -69,7 +70,7 @@ export function Share() {
 
   if (patterns.length === 0) {
     return (
-      <div class="container" style={{ maxWidth: '80rem' }}>
+      <Container>
         <p>共有に失敗しました. 共有の方法をもう一度見直して下さい.</p>
         <p>
           アプリの不具合だと思われる場合は, Twitterで開発者に報告できます.
@@ -80,23 +81,23 @@ export function Share() {
             Twitterで開発者に不具合を報告
           </a>
         </div>
-      </div>
+      </Container>
     )
   }
 
   if (patterns.length === 1) {
     return (
-      <div class="container" style={{ maxWidth: '80rem' }}>
+      <Container>
         Twitterを開いています. 自動で開かない場合は以下のボタンを押して下さい.
         <a class="button" href={patterns[0].url}>
           Twitterを開いて共有
         </a>
-      </div>
+      </Container>
     )
   }
 
   return (
-    <div class="container" style={{ maxWidth: '80rem' }}>
+    <Container>
       <p>
         曲情報の自動判別に失敗しました. 正しい曲情報を以下から選択して下さい.
       </p>
@@ -112,6 +113,6 @@ export function Share() {
           </li>
         ))}
       </ol>
-    </div>
+    </Container>
   )
 }
