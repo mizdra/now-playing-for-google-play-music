@@ -1,10 +1,8 @@
-import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/config'
-
-export type Config = {
-  gpmTemplate: string
-  ytmTemplate: string
-  hashtags: string
-}
+import {
+  DEFAULT_TEMPLATE,
+  DEFAULT_HASHTAGS,
+  Config,
+} from '../../common/js/config'
 
 export type NormalizedConfig = {
   template: string
@@ -12,7 +10,7 @@ export type NormalizedConfig = {
   hashtags: string
 }
 
-export function getConfig(): Promise<Config> {
+export function loadConfig(): Promise<Config> {
   return new Promise<NormalizedConfig>((resolve) => {
     chrome.storage.sync.get(
       {
@@ -34,7 +32,7 @@ export function getConfig(): Promise<Config> {
   })
 }
 
-export function setConfig(config: Config) {
+export function saveConfig(config: Config) {
   // `gpmTemplate` は歴史的経緯により `template` という名前で保存されている
   const normalizedConfig: NormalizedConfig = {
     template: config.gpmTemplate,

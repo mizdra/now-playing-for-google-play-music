@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { useEffect, useMemo } from 'preact/hooks'
 import { renderText, renderURL, renderBugReportURL } from '../../common/js/util'
-import { getConfig } from '../js/config'
+import { loadConfig } from '../js/repository'
 
 type MusicInfo = { artist: string; title: string }
 
@@ -57,7 +57,7 @@ function useRenderedMusicInfoPatterns(
 }
 
 export function Share() {
-  const config = getConfig()
+  const config = loadConfig()
   const patterns = useRenderedMusicInfoPatterns(
     config.gpmTemplate,
     config.hashtags,

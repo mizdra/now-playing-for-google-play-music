@@ -1,7 +1,8 @@
 import { h, render } from 'preact'
-import { getConfig, setConfig, Config } from './config'
+import { loadConfig, saveConfig } from './repository'
 import { ConfigForm } from '../../common/js/organisms/ConfigForm'
 import { useState, useEffect } from 'preact/hooks'
+import { Config } from '../../common/js/config'
 
 export const LOADING_CONFIG = {
   gpmTemplate: 'Loading...',
@@ -12,7 +13,7 @@ export const LOADING_CONFIG = {
 function useConfig() {
   const [config, setConfig] = useState<Config | null>(null)
   useEffect(() => {
-    getConfig().then(setConfig)
+    loadConfig().then(setConfig)
   }, [])
 
   return config
@@ -25,7 +26,7 @@ function Options() {
     <ConfigForm
       disabled={config === null}
       defaultConfig={config ? config : LOADING_CONFIG}
-      onSave={setConfig}
+      onSave={saveConfig}
     />
   )
 }
