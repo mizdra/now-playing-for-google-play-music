@@ -1,6 +1,8 @@
 import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 import { Config } from '../js/config'
+import './ConfigForm.css'
+
 export type Props = {
   disabled?: boolean
   defaultConfig: Config
