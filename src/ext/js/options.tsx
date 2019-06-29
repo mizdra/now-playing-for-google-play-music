@@ -3,6 +3,7 @@ import { loadConfig, saveConfig } from './repository'
 import { ConfigForm } from '../../common/organisms/ConfigForm'
 import { useState, useEffect } from 'preact/hooks'
 import { Config } from '../../common/js/config'
+import '../css/option.css'
 
 export const LOADING_CONFIG = {
   gpmTemplate: 'Loading...',

@@ -14,7 +14,6 @@ const staticFileExtensions = [
   'svg',
   'ico',
   'html',
-  'css',
   'json',
   'webmanifest',
 ]
@@ -32,6 +31,10 @@ const baseConfig = {
           transpileOnly: true,
           configFile: join(rootPath, 'tsconfig.json'),
         },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
     ],
   },

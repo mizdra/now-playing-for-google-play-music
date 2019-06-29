@@ -15,14 +15,12 @@
   "content_scripts": [
     {
       "matches": ["https://play.google.com/*"],
-      "run_at": "document_start",
-      "css": ["./css/gpm/content.css"],
+      "run_at": "document_idle",
       "js": ["./js/gpm/content.js"]
     },
     {
       "matches": ["https://music.youtube.com/*"],
-      "run_at": "document_start",
-      "css": ["./css/ytm/content.css"],
+      "run_at": "document_idle",
       "js": ["./js/ytm/content.js"]
     }
   ],
