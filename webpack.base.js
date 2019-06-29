@@ -21,7 +21,7 @@ const staticFileExtensions = [
 
 const baseConfig = {
   target: 'web',
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-source-map',
 
   module: {
     rules: [
