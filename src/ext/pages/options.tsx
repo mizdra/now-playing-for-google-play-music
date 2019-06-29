@@ -1,9 +1,9 @@
 import { h, render } from 'preact'
-import { loadConfig, saveConfig } from './repository'
+import { loadConfig, saveConfig } from '../js/repository'
 import { ConfigForm } from '../../common/organisms/ConfigForm'
 import { useState, useEffect } from 'preact/hooks'
 import { Config } from '../../common/js/config'
-import '../css/option.css'
+import './options.css'
 
 export const LOADING_CONFIG = {
   gpmTemplate: 'Loading...',

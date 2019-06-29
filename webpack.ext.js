@@ -12,9 +12,9 @@ const {
 
 const extConfig = merge(baseConfig, {
   entry: {
-    'js/options': [join(extSrcPath, 'js/options.tsx')],
-    'js/gpm/content': [join(extSrcPath, 'js/gpm/content.ts')],
-    'js/ytm/content': [join(extSrcPath, 'js/ytm/content.ts')],
+    'pages/options': [join(extSrcPath, 'pages/options.tsx')],
+    'pages/gpm/content': [join(extSrcPath, 'pages/gpm/content.ts')],
+    'pages/ytm/content': [join(extSrcPath, 'pages/ytm/content.ts')],
   },
   output: {
     path: extDistPath,

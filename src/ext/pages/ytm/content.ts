@@ -1,6 +1,6 @@
-import { loadConfig } from '../repository'
+import { loadConfig } from '../../js/repository'
 import { renderText, renderURL, sleep } from '../../../common/js/util'
-import '../../css/ytm/content.css'
+import './content.css'
 
 // 再生中の曲を SNS で共有する
 async function share() {

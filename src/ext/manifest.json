@@ -16,16 +16,16 @@
     {
       "matches": ["https://play.google.com/*"],
       "run_at": "document_idle",
-      "js": ["./js/gpm/content.js"]
+      "js": ["./pages/gpm/content.js"]
     },
     {
       "matches": ["https://music.youtube.com/*"],
       "run_at": "document_idle",
-      "js": ["./js/ytm/content.js"]
+      "js": ["./pages/ytm/content.js"]
     }
   ],
   "options_ui": {
-    "page": "./options.html",
+    "page": "./pages/options.html",
     "open_in_tab": true
   },
   "icons": {
