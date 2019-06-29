@@ -1,46 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Options - #NowPlaying for Google Play Music</title>
+    <title>Config - #NowPlaying for Google Play Music</title>
     <link rel="stylesheet" href="./css/milligram.min.css" />
     <link rel="stylesheet" href="./css/option.css" />
-    <script src="./js/shared.js"></script>
-    <script src="./js/options.js"></script>
   </head>
 
   <body>
-    <fieldset class="gpm">
-      <legend>Google Play Music</legend>
-      <h2>Template</h2>
-      <textarea id="gpm-template"></textarea>
-
-      <h4>Available variables</h4>
-      <ul>
-        <li><code>${title}</code>: The title of music</li>
-        <li><code>${artist}</code>: The artist name of music</li>
-        <li><code>${album}</code>: The album name of music</li>
-        <li><code>${playCount}</code>: The play count of music</li>
-      </ul>
-    </fieldset>
-    <fieldset class="ytm">
-      <legend>Youtube Music</legend>
-      <h2>Template</h2>
-      <textarea id="ytm-template"></textarea>
-
-      <h4>Available variables</h4>
-      <ul>
-        <li><code>${title}</code>: The title of music</li>
-        <li><code>${artist}</code>: The artist name of music</li>
-        <li><code>${album}</code>: The album name of music</li>
-      </ul>
-    </fieldset>
-
-    <h2>Hash tags</h2>
-    <input id="hashtags" type="text" />
-
-    <div>
-      <button id="save">Save</button>
-      <span id="action-message"></span>
-    </div>
+    <script src="./js/options.js"></script>
   </body>
 </html>
