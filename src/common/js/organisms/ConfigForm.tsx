@@ -1,7 +1,8 @@
 import { h } from 'preact'
-import { useState } from 'preact/hooks'
+import { useState, useEffect } from 'preact/hooks'
 import { Config } from '../../../ext/js/config'
 export type Props = {
+  disabled?: boolean
   defaultConfig: Config
   onSave: (newConfig: Config) => void
 }
@@ -9,6 +10,11 @@ export type Props = {
 export function ConfigForm(props: Props) {
   const [actionMessage, setActionMessage] = useState('')
   const [newConfig, setNewConfig] = useState({ ...props.defaultConfig })
+
+  useEffect(() => {
+    setNewConfig(props.defaultConfig)
+  }, [props.defaultConfig])
+
   function handleGpmTemplateChange(e: any) {
     setNewConfig({
       ...newConfig,
@@ -45,7 +51,7 @@ export function ConfigForm(props: Props) {
       <fieldset class="gpm">
         <legend>Google Play Music</legend>
         <h3>Template</h3>
-        <textarea onInput={handleGpmTemplateChange}>
+        <textarea disabled={props.disabled} onInput={handleGpmTemplateChange}>
           {newConfig.gpmTemplate}
         </textarea>
 
@@ -62,7 +68,7 @@ export function ConfigForm(props: Props) {
       <fieldset class="ytm">
         <legend>Youtube Music</legend>
         <h3>Template</h3>
-        <textarea onInput={handleYtmTemplateChange}>
+        <textarea disabled={props.disabled} onInput={handleYtmTemplateChange}>
           {newConfig.ytmTemplate}
         </textarea>
 
@@ -80,12 +86,13 @@ export function ConfigForm(props: Props) {
       <h3>Hash tags</h3>
       <input
         type="text"
+        disabled={props.disabled}
         onInput={handleHashtagsChange}
         value={newConfig.hashtags}
       />
 
       <div>
-        <input type="submit" value="Save" />
+        <input disabled={props.disabled} type="submit" value="Save" />
         <span className="action-message">{actionMessage}</span>
       </div>
     </form>
