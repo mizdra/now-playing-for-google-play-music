@@ -1,5 +1,5 @@
 import { Config } from '../../ext/js/config'
-import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/util'
+import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/config'
 
 const CONFIG_KEY = 'config'
 

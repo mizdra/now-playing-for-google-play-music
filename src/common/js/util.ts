@@ -1,7 +1,3 @@
-import { Config } from '../../ext/js/config'
-
-export const DEFAULT_TEMPLATE = '${title} / ${artist}'
-export const DEFAULT_HASHTAGS = 'NowPlaying'
 export type MusicInfo = {
   title?: string | null
   artist?: string | null

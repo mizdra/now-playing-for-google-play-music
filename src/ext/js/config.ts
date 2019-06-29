@@ -1,4 +1,4 @@
-import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/util'
+import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/config'
 
 export type Config = {
   gpmTemplate: string
