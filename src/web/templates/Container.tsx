@@ -1,7 +1,7 @@
-import { h } from 'preact'
+import { h, ComponentChildren } from 'preact'
 
 export type Props = {
-  children: any
+  children: ComponentChildren
 }
 
 export function Container(props: Props) {

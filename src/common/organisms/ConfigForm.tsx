@@ -17,28 +17,28 @@ export function ConfigForm(props: Props) {
     setNewConfig(props.defaultConfig)
   }, [props.defaultConfig])
 
-  function handleGpmTemplateChange(e: any) {
+  function handleGpmTemplateChange(e: Event) {
     setNewConfig({
       ...newConfig,
-      gpmTemplate: e.target.value,
+      gpmTemplate: (e.currentTarget as HTMLTextAreaElement).value,
     })
   }
 
-  function handleYtmTemplateChange(e: any) {
+  function handleYtmTemplateChange(e: Event) {
     setNewConfig({
       ...newConfig,
-      ytmTemplate: e.target.value,
+      ytmTemplate: (e.currentTarget as HTMLTextAreaElement).value,
     })
   }
 
-  function handleHashtagsChange(e: any) {
+  function handleHashtagsChange(e: Event) {
     setNewConfig({
       ...newConfig,
-      hashtags: e.target.value,
+      hashtags: (e.currentTarget as HTMLInputElement).value,
     })
   }
 
-  function handleSubmit(e: any) {
+  function handleSubmit(e: Event) {
     e.preventDefault()
     props.onSave(newConfig)
     setActionMessage('Saved!')
