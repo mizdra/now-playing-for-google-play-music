@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk" title="#NowPlaying for Google Play Music" target="_blank" rel="noopener">
-  <img alt="Logo"src="./img/logo-128.png?raw=true">
+  <img alt="Logo"src=./src/common/img/logo-128.png?raw=true">
 </a>
 
 # #NowPlaying for Google Play Music
@@ -28,7 +28,7 @@ Share music playing on Google Play Music to SNS.
 
 ## Screenshots
 
-![Screenshot 1](./img/screenshot1.png?raw=true 'Screenshot 1')
-![Screenshot 2](./img/screenshot2.png?raw=true 'Screenshot 2')
-![Screenshot 3](./img/screenshot3.png?raw=true 'Screenshot 3')
-![Screenshot 4](./img/screenshot4.png?raw=true 'Screenshot 4')
+![Screenshot 1](./src/common/img/screenshot1.png?raw=true 'Screenshot 1')
+![Screenshot 2](./src/common/img/screenshot2.png?raw=true 'Screenshot 2')
+![Screenshot 3](./src/common/img/screenshot3.png?raw=true 'Screenshot 3')
+![Screenshot 4](./src/common/img/screenshot4.png?raw=true 'Screenshot 4')
