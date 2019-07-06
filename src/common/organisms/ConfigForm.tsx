@@ -66,11 +66,10 @@ export function ConfigForm(props: Props) {
         <legend>Google Play Music</legend>
         <h3>Template</h3>
         <textarea
+          value={newConfig.gpmTemplate}
           disabled={props.disabled}
-          onInput={handleChange('gpmTemplate')}
-        >
-          {newConfig.gpmTemplate}
-        </textarea>
+          onChange={handleChange('gpmTemplate')}
+        />
 
         <h4>Available variables</h4>
         <ul>{createVariableList(props.availableVariables.gpm)}</ul>
@@ -83,11 +82,10 @@ export function ConfigForm(props: Props) {
         <legend>Youtube Music</legend>
         <h3>Template</h3>
         <textarea
+          value={newConfig.ytmTemplate}
           disabled={props.disabled}
-          onInput={handleChange('ytmTemplate')}
-        >
-          {newConfig.ytmTemplate}
-        </textarea>
+          onChange={handleChange('ytmTemplate')}
+        />
 
         <h4>Available variables</h4>
         <ul>{createVariableList(props.availableVariables.ytm)}</ul>
@@ -104,9 +102,9 @@ export function ConfigForm(props: Props) {
       <h3>Hash tags</h3>
       <input
         type="text"
-        disabled={props.disabled}
-        onInput={handleChange('hashtags')}
         value={newConfig.hashtags}
+        disabled={props.disabled}
+        onChange={handleChange('hashtags')}
       />
 
       <div>
