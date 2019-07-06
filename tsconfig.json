@@ -10,7 +10,6 @@
 
     /* Extension */
     "jsx": "react",
-    "jsxFactory": "h",
     // "emitDecoratorMetadata": true,
     // "experimentalDecorators": true,
 

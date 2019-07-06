@@ -1,9 +1,50 @@
-import { h } from 'preact'
-import { useMemo } from 'preact/hooks'
+import React from 'react'
 import { Container } from '../templates/Container'
+import ReactMarkdown from 'react-markdown'
+
+const MD = `
+## Features
+- Share your music to **Twitter**
+- Support **Google Play Music** and **Youtube Music**
+- Customizable template with variable
+  - \`\${title}\`: The title of music
+  - \`\${artist}\`: The artist name of music
+  - \`\${album}\`: The album name of music
+  - \`\${playCount}\`: The play count of music
+- Support mobile platform
+
+
+## Variables supported by each platform
+
+|            Platform            |                        Google Play Music                        |                Youtube Music                |
+| :----------------------------: | :-------------------------------------------------------------: | :-----------------------------------------: |
+| Desktop <br> (Chrome, Firefox) | \`\${title}\` <br> \`\${artist}\` <br> \`\${album}\` <br> \`\${playCount}\` | \`\${title}\` <br> \`\${artist}\` <br> \`\${album}\` |
+|     Android <sup>[1]</sup>     |                   \`\${title}\` <br> \`\${artist}\`                   |  🚫  <br>  Not yet supported   |
+|              iOS               |           🚫  <br>  Not yet supported             |  🚫  <br>  Not yet supported   |
+
+<sup>[1]</sup> Currently, only Japanese language environment is supported.
+
+
+## Installation
+
+### Desktop
+- [Chrome](https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk)
+- [Firefox](https://addons.mozilla.org/ja/firefox/addon/nowplaying-for-google-pla)
+
+### Android
+
+1. Open [now-playing-for-gpm.mizdra.net](https://now-playing-for-gpm.mizdra.net) with Chrome for Android
+   1. Tap menu (<img src="./src/common/img/more_vert.svg" alt="Menu Icon" class="icon" />)
+   2. Tap <code>Add to Home screen</code> ( Japanese: <code>ホーム画面に追加</code> )
+2. Open Google Play Music App for Android
+   1. Play your favorite music
+   2. Tap menu (<img src="./src/common/img/more_vert.svg" alt="Menu Icon" class="icon" />) in Google Play Music
+   3. Select #NowPlaying (<img src="./src/common/img/logo.svg" alt="#NowPlaying Icon" class="icon" />)
+   4. Let's Tweet!
+`
 
 function useInstalled() {
-  const installed = useMemo(() => {
+  const installed = React.useMemo(() => {
     const params = new URLSearchParams(location.search)
     return params.get('utm_source') === 'homescreen'
   }, [location.search])
@@ -15,11 +56,15 @@ export function Top() {
 
   return (
     <div>
-      <div class="welcome">
+      <div className="welcome">
         <img src="/img/logo.svg" alt="アプリのロゴ" />
-        <h1>#NowListening for Google Play Music</h1>
+        <h1>#NowPlaying for Google Play Music</h1>
+        <p>
+          It's tools to share music playing on Google Play Music / Youtube Music
+          to SNS.
+        </p>
         {installed && (
-          <a class="button" href="/config">
+          <a className="button" href="/config">
             設定を変更
           </a>
         )}
@@ -27,64 +72,7 @@ export function Top() {
       <Container>
         <main>
           <section>
-            <h2>What's this?</h2>
-            <p>
-              It's tools to share music playing on Google Play Music / Youtube
-              Music to SNS.
-            </p>
-
-            <h2>What platform supported?</h2>
-            <ul>
-              <li>
-                <a href="https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk">
-                  Chrome for Desktop
-                </a>
-              </li>
-              <li>
-                <a href="https://addons.mozilla.org/ja/firefox/addon/nowplaying-for-google-pla/">
-                  Firefox for Desktop
-                </a>
-              </li>
-              <li>
-                <a href="/#how-to-install">Chrome for Android</a>
-              </li>
-            </ul>
-
-            <h2 name="how-to-install">
-              How do you install the version of Chrome for Android?
-            </h2>
-            <ol>
-              <li>Open this page with Chrome for Android</li>
-              <ol>
-                <li>
-                  Tap menu (
-                  <img src="/img/more_vert.svg" alt="Menu Icon" class="icon" />)
-                </li>
-                <li>
-                  Tap <code>Add to Home screen</code> ( Japanese:{' '}
-                  <code>ホーム画面に追加</code> )
-                </li>
-              </ol>
-              <li>Open Google Play Music App for Android</li>
-              <ol>
-                <li>Play your favorite music</li>
-                <li>
-                  Tap menu (
-                  <img src="/img/more_vert.svg" alt="Menu Icon" class="icon" />)
-                  in Google Play Music
-                </li>
-                <li>
-                  Select #NowPlaying (
-                  <img
-                    src="/img/logo.svg"
-                    alt="#NowPlaying Icon"
-                    class="icon"
-                  />
-                  )
-                </li>
-                <li>Let's Tweet!</li>
-              </ol>
-            </ol>
+            <ReactMarkdown source={MD} escapeHtml={false} />
           </section>
         </main>
       </Container>

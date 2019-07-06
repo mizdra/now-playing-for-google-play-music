@@ -1,12 +1,12 @@
-import { h, ComponentChildren } from 'preact'
+import React from 'react'
 
 export type Props = {
-  children: ComponentChildren
+  children: React.ReactNode
 }
 
 export function Container(props: Props) {
   return (
-    <div class="container" style={{ maxWidth: '80rem' }}>
+    <div className="container" style={{ maxWidth: '80rem' }}>
       {props.children}
     </div>
   )
