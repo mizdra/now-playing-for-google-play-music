@@ -35,8 +35,8 @@ It's tools to share music playing on Google Play Music / Youtube Music to SNS.
 |            Platform            |                        Google Play Music                        |                Youtube Music                |
 | :----------------------------: | :-------------------------------------------------------------: | :-----------------------------------------: |
 | Desktop <br> (Chrome, Firefox) | `${title}` <br> `${artist}` <br> `${album}` <br> `${playCount}` | `${title}` <br> `${artist}` <br> `${album}` |
-|     Android <sup>[1]</sup>     |                   `${title}` <br> `${artist}`                   |  :no_entry_sign:  <br>  Not yet supported   |
-|              iOS               |            :no_entry_sign:  <br>  Not yet supported             |  :no_entry_sign:  <br>  Not yet supported   |
+|     Android <sup>[1]</sup>     |                   `${title}` <br> `${artist}`                   |         🚫  <br>  Not yet supported         |
+|              iOS               |                   🚫  <br>  Not yet supported                   |         🚫  <br>  Not yet supported         |
 
 <sup>[1]</sup> Currently, only Japanese language environment is supported.
 
