@@ -34,12 +34,12 @@ const MD = `
 ### Android
 
 1. Open [now-playing-for-gpm.mizdra.net](https://now-playing-for-gpm.mizdra.net) with Chrome for Android
-   1. Tap menu (<img src="./src/common/img/more_vert.svg" alt="Menu Icon" class="icon" />)
+   1. Tap menu (<img src="./img/more_vert.svg" alt="Menu Icon" class="icon" />)
    2. Tap <code>Add to Home screen</code> ( Japanese: <code>ホーム画面に追加</code> )
 2. Open Google Play Music App for Android
    1. Play your favorite music
-   2. Tap menu (<img src="./src/common/img/more_vert.svg" alt="Menu Icon" class="icon" />) in Google Play Music
-   3. Select #NowPlaying (<img src="./src/common/img/logo.svg" alt="#NowPlaying Icon" class="icon" />)
+   2. Tap menu (<img src="./img/more_vert.svg" alt="Menu Icon" class="icon" />) in Google Play Music
+   3. Select #NowPlaying (<img src="./img/logo.svg" alt="#NowPlaying Icon" class="icon" />)
    4. Let's Tweet!
 `
 
