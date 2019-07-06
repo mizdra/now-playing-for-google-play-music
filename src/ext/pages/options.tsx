@@ -41,4 +41,4 @@ function Options() {
   )
 }
 
-render(<Options />, document.body)
+render(<Options />, document.getElementById('app'))
