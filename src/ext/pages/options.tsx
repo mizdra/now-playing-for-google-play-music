@@ -1,10 +1,10 @@
-import { h, render } from 'preact'
+import React from 'react'
+import { render } from 'react-dom'
 import { loadConfig, saveConfig } from '../js/repository'
 import {
   ConfigForm,
   AvailableVariables,
 } from '../../common/organisms/ConfigForm'
-import { useState, useEffect } from 'preact/hooks'
 import { Config } from '../../common/js/config'
 import './options.css'
 
@@ -20,8 +20,8 @@ const AVAILABLE_VARIABLES: AvailableVariables = {
 }
 
 function useConfig() {
-  const [config, setConfig] = useState<Config | null>(null)
-  useEffect(() => {
+  const [config, setConfig] = React.useState<Config | null>(null)
+  React.useEffect(() => {
     loadConfig().then(setConfig)
   }, [])
 

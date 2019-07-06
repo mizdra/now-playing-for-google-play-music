@@ -1,5 +1,4 @@
-import { h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
+import React from 'react'
 import { Config } from '../js/config'
 import './ConfigForm.css'
 
@@ -17,7 +16,7 @@ const DESCRIPTIONS: { [key in Variable]: string } = {
   playCount: 'The play count of music',
 }
 
-function createVariableList(variables: Variable[]): h.JSX.Element[] {
+function createVariableList(variables: Variable[]): React.ReactElement[] {
   if (variables.length === 0) return []
   const $li = (
     <li>
@@ -35,24 +34,23 @@ export type Props = {
 }
 
 export function ConfigForm(props: Props) {
-  const [actionMessage, setActionMessage] = useState('')
-  const [newConfig, setNewConfig] = useState({ ...props.defaultConfig })
+  const [actionMessage, setActionMessage] = React.useState('')
+  const [newConfig, setNewConfig] = React.useState({ ...props.defaultConfig })
 
-  useEffect(() => {
+  React.useEffect(() => {
     setNewConfig(props.defaultConfig)
   }, [props.defaultConfig])
 
   function handleChange(type: 'gpmTemplate' | 'ytmTemplate' | 'hashtags') {
-    return (e: Event) => {
+    return (e: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>) => {
       setNewConfig({
         ...newConfig,
-        [type]: (e.currentTarget as HTMLTextAreaElement | HTMLInputElement)
-          .value,
+        [type]: e.currentTarget.value,
       })
     }
   }
 
-  function handleSubmit(e: Event) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     props.onSave(newConfig)
     setActionMessage('Saved!')
@@ -64,7 +62,7 @@ export function ConfigForm(props: Props) {
   const $fieldsetList = []
   if (props.availableVariables.gpm) {
     $fieldsetList.push(
-      <fieldset class="gpm">
+      <fieldset className="gpm">
         <legend>Google Play Music</legend>
         <h3>Template</h3>
         <textarea
@@ -81,7 +79,7 @@ export function ConfigForm(props: Props) {
   }
   if (props.availableVariables.ytm) {
     $fieldsetList.push(
-      <fieldset class="ytm">
+      <fieldset className="ytm">
         <legend>Youtube Music</legend>
         <h3>Template</h3>
         <textarea
@@ -99,7 +97,7 @@ export function ConfigForm(props: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 class="page-title">Config</h2>
+      <h2 className="page-title">Config</h2>
 
       {$fieldsetList}
 

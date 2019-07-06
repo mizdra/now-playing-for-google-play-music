@@ -1,5 +1,4 @@
-import { h } from 'preact'
-import { useEffect, useMemo } from 'preact/hooks'
+import React from 'react'
 import { renderText, renderURL, renderBugReportURL } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
@@ -42,7 +41,7 @@ function useRenderedMusicInfoPatterns(
 ): RenderedMusicInfo[] {
   const titleParam = new URLSearchParams(location.search).get('title')
 
-  const patterns = useMemo(() => {
+  const patterns = React.useMemo(() => {
     return parseTitle(titleParam).map((musicInfo) => {
       const text = renderText(template, musicInfo)
       const url = renderURL(text, hashtags)
@@ -64,7 +63,7 @@ export function Share() {
     config.hashtags,
   )
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (patterns.length === 1) location.href = patterns[0].url
   }, [patterns])
 
@@ -77,7 +76,7 @@ export function Share() {
           報告していただいた内容は今後のアプリの改善に役立てられます.
         </p>
         <div>
-          <a class="button" href={renderBugReportURL({ config, patterns })}>
+          <a className="button" href={renderBugReportURL({ config, patterns })}>
             Twitterで開発者に不具合を報告
           </a>
         </div>
@@ -89,7 +88,7 @@ export function Share() {
     return (
       <Container>
         Twitterを開いています. 自動で開かない場合は以下のボタンを押して下さい.
-        <a class="button" href={patterns[0].url}>
+        <a className="button" href={patterns[0].url}>
           Twitterを開いて共有
         </a>
       </Container>
@@ -101,12 +100,12 @@ export function Share() {
       <p>
         曲情報の自動判別に失敗しました. 正しい曲情報を以下から選択して下さい.
       </p>
-      <ol class="pattern-list">
+      <ol className="pattern-list">
         {patterns.map((pattern, index) => (
           <li>
-            <a class="pattern-link" href={pattern.url}>
-              <div class="pattern-link-text">
-                <div class="pattern-index">{`${index + 1}. `}</div>
+            <a className="pattern-link" href={pattern.url}>
+              <div className="pattern-link-text">
+                <div className="pattern-index">{`${index + 1}. `}</div>
                 <div>{pattern.text}</div>
               </div>
             </a>

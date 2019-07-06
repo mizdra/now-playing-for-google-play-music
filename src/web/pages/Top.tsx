@@ -1,9 +1,8 @@
-import { h } from 'preact'
-import { useMemo } from 'preact/hooks'
+import React from 'react'
 import { Container } from '../templates/Container'
 
 function useInstalled() {
-  const installed = useMemo(() => {
+  const installed = React.useMemo(() => {
     const params = new URLSearchParams(location.search)
     return params.get('utm_source') === 'homescreen'
   }, [location.search])
@@ -15,11 +14,11 @@ export function Top() {
 
   return (
     <div>
-      <div class="welcome">
+      <div className="welcome">
         <img src="/img/logo.svg" alt="アプリのロゴ" />
         <h1>#NowListening for Google Play Music</h1>
         {installed && (
-          <a class="button" href="/config">
+          <a className="button" href="/config">
             設定を変更
           </a>
         )}
@@ -50,15 +49,18 @@ export function Top() {
               </li>
             </ul>
 
-            <h2 name="how-to-install">
-              How do you install the version of Chrome for Android?
-            </h2>
+            <h2>How do you install the version of Chrome for Android?</h2>
             <ol>
               <li>Open this page with Chrome for Android</li>
               <ol>
                 <li>
                   Tap menu (
-                  <img src="/img/more_vert.svg" alt="Menu Icon" class="icon" />)
+                  <img
+                    src="/img/more_vert.svg"
+                    alt="Menu Icon"
+                    className="icon"
+                  />
+                  )
                 </li>
                 <li>
                   Tap <code>Add to Home screen</code> ( Japanese:{' '}
@@ -70,15 +72,19 @@ export function Top() {
                 <li>Play your favorite music</li>
                 <li>
                   Tap menu (
-                  <img src="/img/more_vert.svg" alt="Menu Icon" class="icon" />)
-                  in Google Play Music
+                  <img
+                    src="/img/more_vert.svg"
+                    alt="Menu Icon"
+                    className="icon"
+                  />
+                  ) in Google Play Music
                 </li>
                 <li>
                   Select #NowPlaying (
                   <img
                     src="/img/logo.svg"
                     alt="#NowPlaying Icon"
-                    class="icon"
+                    className="icon"
                   />
                   )
                 </li>

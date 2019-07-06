@@ -1,5 +1,6 @@
 import './js/initialize'
-import { h, render } from 'preact'
+import React from 'react'
+import { render } from 'react-dom'
 import { App } from './App'
 import './index.css'
 

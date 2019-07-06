@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import React from 'react'
 import { Top } from './pages/Top'
 import { Config } from './pages/Config'
 import { Share } from './pages/Share'
