@@ -1,9 +1,12 @@
-import { Config } from '../../ext/js/config'
-import { DEFAULT_TEMPLATE, DEFAULT_HASHTAGS } from '../../common/js/util'
+import {
+  DEFAULT_TEMPLATE,
+  DEFAULT_HASHTAGS,
+  Config,
+} from '../../common/js/config'
 
 const CONFIG_KEY = 'config'
 
-export function getConfig(): Config {
+export function loadConfig(): Config {
   const json = localStorage.getItem(CONFIG_KEY) || '{}'
   return {
     gpmTemplate: DEFAULT_TEMPLATE,
@@ -13,6 +16,6 @@ export function getConfig(): Config {
   }
 }
 
-export function setConfig(newConfig: Config) {
+export function saveConfig(newConfig: Config) {
   localStorage.setItem(CONFIG_KEY, JSON.stringify(newConfig))
 }

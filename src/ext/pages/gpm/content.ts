@@ -1,5 +1,6 @@
-import { getConfig } from '../config'
+import { loadConfig } from '../../js/repository'
 import { renderText, renderURL, sleep } from '../../../common/js/util'
+import './content.css'
 
 // 再生中の曲を SNS で共有する
 async function share() {
@@ -10,7 +11,7 @@ async function share() {
     document.querySelector(
       '#queue-overlay .currently-playing [data-col="play-count"]',
     )!.textContent || '0'
-  const { gpmTemplate, hashtags } = await getConfig()
+  const { gpmTemplate, hashtags } = await loadConfig()
 
   const text = renderText(gpmTemplate, { title, artist, album, playCount })
   const url = renderURL(text, hashtags)

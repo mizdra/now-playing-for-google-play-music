@@ -18,9 +18,11 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.3",
+    "css-loader": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
+    "style-loader": "^0.23.1",
     "ts-loader": "^6.0.3",
     "typescript": "^3.5.2",
     "webpack": "^4.34.0",
@@ -31,6 +33,7 @@
   },
   "dependencies": {
     "@types/chrome": "^0.0.86",
+    "milligram": "^1.3.0",
     "preact": "^10.0.0-beta.2"
   }
 }

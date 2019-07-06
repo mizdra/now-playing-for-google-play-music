@@ -1,0 +1,24 @@
+fieldset {
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-radius: 5px !important;
+  padding: 0 20px !important;
+  margin-bottom: 2.5rem !important;
+}
+fieldset.gpm {
+  border-color: #ff6c6c;
+}
+fieldset.gpm > legend {
+  color: #ff6c6c;
+}
+fieldset.ytm {
+  border-color: #ff0e0e;
+}
+fieldset.ytm > legend {
+  color: #ff0e0e;
+}
+
+.action-message {
+  margin-left: 5px;
+  color: #2196f3;
+}

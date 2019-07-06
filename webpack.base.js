@@ -14,14 +14,13 @@ const staticFileExtensions = [
   'svg',
   'ico',
   'html',
-  'css',
   'json',
   'webmanifest',
 ]
 
 const baseConfig = {
   target: 'web',
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-source-map',
 
   module: {
     rules: [
@@ -32,6 +31,10 @@ const baseConfig = {
           transpileOnly: true,
           configFile: join(rootPath, 'tsconfig.json'),
         },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
     ],
   },

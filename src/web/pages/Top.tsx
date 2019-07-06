@@ -1,5 +1,6 @@
 import { h } from 'preact'
 import { useMemo } from 'preact/hooks'
+import { Container } from '../templates/Container'
 
 function useInstalled() {
   const installed = useMemo(() => {
@@ -23,7 +24,7 @@ export function Top() {
           </a>
         )}
       </div>
-      <div class="container">
+      <Container>
         <main>
           <section>
             <h2>What's this?</h2>
@@ -86,7 +87,7 @@ export function Top() {
             </ol>
           </section>
         </main>
-      </div>
+      </Container>
     </div>
   )
 }

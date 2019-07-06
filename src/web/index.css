@@ -1,3 +1,5 @@
+@import '~milligram/dist/milligram.css';
+
 html,
 body {
   margin: 0;
@@ -9,38 +11,9 @@ body {
   padding: 0 10px 5px;
 }
 
-.action-message {
-  margin-left: 5px;
-  color: #2196f3;
-}
-
 .icon {
   width: 1em;
   vertical-align: middle;
-}
-
-fieldset {
-  border: 2px solid;
-  border-radius: 5px;
-  padding: 0 20px;
-  margin-bottom: 2.5rem;
-}
-fieldset.gpm {
-  border-color: #ff6c6c;
-}
-fieldset.gpm > legend {
-  color: #ff6c6c;
-}
-fieldset.ytm {
-  border-color: #ff0e0e;
-}
-fieldset.ytm > legend {
-  color: #ff0e0e;
-}
-
-#action-message {
-  margin-left: 5px;
-  color: #2196f3;
 }
 
 .container {
