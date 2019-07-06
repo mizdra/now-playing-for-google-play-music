@@ -1,12 +1,23 @@
 import { h } from 'preact'
 import { loadConfig, saveConfig } from '../js/repository'
-import { ConfigForm } from '../../common/organisms/ConfigForm'
+import {
+  ConfigForm,
+  AvailableVariables,
+} from '../../common/organisms/ConfigForm'
 import { Container } from '../templates/Container'
+
+const AVAILABLE_VARIABLES: AvailableVariables = {
+  gpm: ['title', 'artist'],
+}
 
 export function Config() {
   return (
     <Container>
-      <ConfigForm defaultConfig={loadConfig()} onSave={saveConfig} />
+      <ConfigForm
+        availableVariables={AVAILABLE_VARIABLES}
+        defaultConfig={loadConfig()}
+        onSave={saveConfig}
+      />
     </Container>
   )
 }

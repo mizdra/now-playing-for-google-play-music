@@ -1,6 +1,9 @@
 import { h, render } from 'preact'
 import { loadConfig, saveConfig } from '../js/repository'
-import { ConfigForm } from '../../common/organisms/ConfigForm'
+import {
+  ConfigForm,
+  AvailableVariables,
+} from '../../common/organisms/ConfigForm'
 import { useState, useEffect } from 'preact/hooks'
 import { Config } from '../../common/js/config'
 import './options.css'
@@ -9,6 +12,11 @@ export const LOADING_CONFIG = {
   gpmTemplate: 'Loading...',
   ytmTemplate: 'Loading...',
   hashtags: 'Loading...',
+}
+
+const AVAILABLE_VARIABLES: AvailableVariables = {
+  gpm: ['title', 'artist', 'album', 'playCount'],
+  ytm: ['title', 'artist', 'album'],
 }
 
 function useConfig() {
@@ -25,6 +33,7 @@ function Options() {
 
   return (
     <ConfigForm
+      availableVariables={AVAILABLE_VARIABLES}
       disabled={config === null}
       defaultConfig={config ? config : LOADING_CONFIG}
       onSave={saveConfig}
