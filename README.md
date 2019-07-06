@@ -1,30 +1,63 @@
+<style>
+.icon {
+    width: 1em;
+    vertical-align: middle;
+}
+</style>
+
 <div align="center">
 
-<a href="https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk" title="#NowPlaying for Google Play Music" target="_blank" rel="noopener">
+<a href="https://now-playing-for-gpm.mizdra.net" title="#NowPlaying for Google Play Music" target="_blank" rel="noopener">
   <img alt="Logo"src=./src/common/img/logo-128.png?raw=true">
 </a>
 
+
 # #NowPlaying for Google Play Music
 
-Share music playing on Google Play Music to SNS.
+It's tools to share music playing on Google Play Music / Youtube Music to SNS.
 
 </div>
 
-## Installation
-- [Chrome](https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk)
-- [Firefox](https://addons.mozilla.org/ja/firefox/addon/nowplaying-for-google-pla)
 
 ## Features
-- Supported music service
-  - Google Play Music
-  - Youtube Music
-- Available template variable
+- Share your music to **Twitter**
+- Support **Google Play Music** and **Youtube Music**
+- Customizable template with variable
   - <code>${title}</code>: The title of music
   - <code>${artist}</code>: The artist name of music
   - <code>${album}</code>: The album name of music
-  - <code>${playCount}</code>: The play count of music (**Google Play Music ONLY**)
-- Supported SNS
-  - Twitter
+  - <code>${playCount}</code>: The play count of music
+- Support mobile platform
+
+
+## Variables supported by each platform
+
+|            Platform            |                        Google Play Music                        |                Youtube Music                |
+| :----------------------------: | :-------------------------------------------------------------: | :-----------------------------------------: |
+| Desktop <br> (Chrome, Firefox) | `${title}` <br> `${artist}` <br> `${album}` <br> `${playCount}` | `${title}` <br> `${artist}` <br> `${album}` |
+|     Android <sup>[1]</sup>     |                   `${title}` <br> `${artist}`                   |  :no_entry_sign:  <br>  Not yet supported   |
+|              iOS               |            :no_entry_sign:  <br>  Not yet supported             |  :no_entry_sign:  <br>  Not yet supported   |
+
+<sup>[1]</sup> Currently, only Japanese language environment is supported.
+
+
+## Installation
+
+### Desktop
+- [Chrome](https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk)
+- [Firefox](https://addons.mozilla.org/ja/firefox/addon/nowplaying-for-google-pla)
+
+### Android
+
+1. Open [now-playing-for-gpm.mizdra.net](https://now-playing-for-gpm.mizdra.net) with Chrome for Android
+   1. Tap menu (<img src="./src/common/img/more_vert.svg" alt="Menu Icon" class="icon" />)
+   2. Tap <code>Add to Home screen</code> ( Japanese: <code>ホーム画面に追加</code> )
+2. Open Google Play Music App for Android
+   1. Play your favorite music
+   2. Tap menu (<img src="./src/common/img/more_vert.svg" alt="Menu Icon" class="icon" />) in Google Play Music
+   3. Select #NowPlaying (<img src="./src/common/img/logo.svg" alt="#NowPlaying Icon" class="icon" />)
+   4. Let's Tweet!
+
 
 ## Screenshots
 
