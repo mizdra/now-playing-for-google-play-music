@@ -19,7 +19,7 @@ const DESCRIPTIONS: { [key in Variable]: string } = {
 function createVariableList(variables: Variable[]): React.ReactElement[] {
   if (variables.length === 0) return []
   const $li = (
-    <li>
+    <li key={variables[0]}>
       <code>{'${' + variables[0] + '}'}</code>: {DESCRIPTIONS[variables[0]]}
     </li>
   )
@@ -62,7 +62,7 @@ export function ConfigForm(props: Props) {
   const $fieldsetList = []
   if (props.availableVariables.gpm) {
     $fieldsetList.push(
-      <fieldset className="gpm">
+      <fieldset key="gpm" className="gpm">
         <legend>Google Play Music</legend>
         <h3>Template</h3>
         <textarea
@@ -79,7 +79,7 @@ export function ConfigForm(props: Props) {
   }
   if (props.availableVariables.ytm) {
     $fieldsetList.push(
-      <fieldset className="ytm">
+      <fieldset key="ytm" className="ytm">
         <legend>Youtube Music</legend>
         <h3>Template</h3>
         <textarea
