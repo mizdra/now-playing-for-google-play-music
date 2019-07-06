@@ -1,3 +1,9 @@
+<a name="v1.1.1"></a>
+## [v1.1.1] - 2019-07-06
+### Bug Fixes
+- Fix failure of loading icon in chrome web store
+
+
 <a name="1.1.0"></a>
 ## [1.1.0] - 2019-07-06
 
@@ -36,6 +42,7 @@
 - implement sharing music
 
 
+[v1.1.1]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v0.0.1...v1.0.0
