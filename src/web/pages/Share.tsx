@@ -7,40 +7,48 @@ import {
 } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
-import { parseTitle } from '../js/parser'
+import {
+  parseTitle,
+  isYTMTitle,
+  parseYTMTitle,
+  isGPMTitle,
+  parseGPMTitle,
+  getTemplate,
+} from '../js/parser'
+import { Config } from '../../common/js/config'
 
 type RenderedMusicInfo = MusicInfo & {
   text: string
   url: string
 }
 
-function useRenderedMusicInfoPatterns(
-  template: string,
-  hashtags: string,
-): RenderedMusicInfo[] {
+function useRenderedMusicInfoPatterns(config: Config): RenderedMusicInfo[] {
   const titleParam = new URLSearchParams(location.search).get('title')
 
   const patterns = React.useMemo(() => {
-    return parseTitle(titleParam).map((musicInfo) => {
-      const text = renderText(template, musicInfo)
-      const url = renderURL(text, hashtags)
+    const musicInfoList: MusicInfo[] = parseTitle(titleParam)
+    if (musicInfoList.length === 0) return []
+    const template = isYTMTitle(titleParam!)
+      ? config.ytmTemplate
+      : config.gpmTemplate
+
+    return musicInfoList.map((musicInfo) => {
+      const text = renderText(template!, musicInfo)
+      const url = renderURL(text, config.hashtags)
       return {
         ...musicInfo,
         text,
         url,
       }
     })
-  }, [template, hashtags, titleParam])
+  }, [config, titleParam])
 
   return patterns
 }
 
 export function Share() {
   const config = loadConfig()
-  const patterns = useRenderedMusicInfoPatterns(
-    config.gpmTemplate,
-    config.hashtags,
-  )
+  const patterns = useRenderedMusicInfoPatterns(config)
 
   React.useEffect(() => {
     if (patterns.length === 1) location.href = patterns[0].url
