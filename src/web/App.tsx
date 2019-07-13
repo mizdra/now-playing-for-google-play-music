@@ -5,6 +5,19 @@ import { Share } from './pages/Share'
 
 export function App() {
   const path = location.pathname
-  const Content = path === '/' ? Top : path === '/config' ? Config : Share
-  return <Content />
+  if (path === '/') return <Top />
+  if (path === '/config') return <Config />
+  if (path === '/share') {
+    const params = new URLSearchParams(location.search)
+    return (
+      <Share
+        params={{
+          title: params.get('title'),
+          text: params.get('text'),
+          url: params.get('url'),
+        }}
+      />
+    )
+  }
+  throw new Error('404 Not Found')
 }
