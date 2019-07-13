@@ -2,33 +2,7 @@ import React from 'react'
 import { renderText, renderURL, renderBugReportURL } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
-
-type MusicInfo = { artist: string; title: string }
-
-// Web Share Target API の title パラメータをパースし, 曲情報に変換する.
-// 曲情報に複数通りの可能性があるならその全てからなるリストを, 1つもない場合は空のリストを返す.
-function parseTitle(titleParam: string | null): MusicInfo[] {
-  // `titleParam` は "小倉唯のHoney Come!!をチェック" のような形式になっている
-  if (titleParam === null || !titleParam.endsWith('をチェック')) return []
-
-  const tailedTitle = titleParam.slice(0, -5)
-
-  // 'の' を基準にアーティスト名と曲名を分ける.
-  // 'の' が複数ある場合はその全通りを返す.
-  function splitTailedTitle(fromIndex: number): MusicInfo[] {
-    const index = tailedTitle.indexOf('の', fromIndex)
-    if (index === -1) return []
-    return [
-      {
-        artist: tailedTitle.slice(0, index),
-        title: tailedTitle.slice(index + 1),
-      },
-      ...splitTailedTitle(index + 1),
-    ]
-  }
-
-  return splitTailedTitle(0)
-}
+import { MusicInfo, parseTitle } from '../../ext/js/parser'
 
 type RenderedMusicInfo = MusicInfo & {
   text: string
