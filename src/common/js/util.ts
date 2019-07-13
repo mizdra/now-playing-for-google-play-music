@@ -1,16 +1,16 @@
-export type MusicInfo = {
+export type Music = {
   title?: string | null
   artist?: string | null
   album?: string | null
   playCount?: string | null
 }
 
-export function renderText(template: string, musicInfo: MusicInfo) {
+export function renderText(template: string, music: Music) {
   return template
-    .replace(/\${title}/g, musicInfo.title || '')
-    .replace(/\${artist}/g, musicInfo.artist || '')
-    .replace(/\${album}/g, musicInfo.album || '')
-    .replace(/\${playCount}/g, musicInfo.playCount || '')
+    .replace(/\${title}/g, music.title || '')
+    .replace(/\${artist}/g, music.artist || '')
+    .replace(/\${album}/g, music.album || '')
+    .replace(/\${playCount}/g, music.playCount || '')
 }
 
 export function renderURL(text: string, hashtags: string) {

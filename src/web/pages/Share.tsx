@@ -3,58 +3,59 @@ import {
   renderText,
   renderURL,
   renderBugReportURL,
-  MusicInfo,
+  Music,
 } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
 import {
-  parseTitle,
   isYTMTitle,
   parseYTMTitle,
   isGPMTitle,
   parseGPMTitle,
-  getTemplate,
 } from '../js/parser'
-import { Config } from '../../common/js/config'
 
-type RenderedMusicInfo = MusicInfo & {
-  text: string
-  url: string
+type Props = {
+  params: {
+    title: string | null
+    text: string | null
+    url: string | null
+  }
 }
 
-function useRenderedMusicInfoPatterns(config: Config): RenderedMusicInfo[] {
-  const titleParam = new URLSearchParams(location.search).get('title')
+export function Share(props: Props) {
+  const config = loadConfig()
+  const titleParam = props.params.title
 
-  const patterns = React.useMemo(() => {
-    const musicInfoList: MusicInfo[] = parseTitle(titleParam)
-    if (musicInfoList.length === 0) return []
-    const template = isYTMTitle(titleParam!)
-      ? config.ytmTemplate
-      : config.gpmTemplate
+  const renderedMusicList = React.useMemo(() => {
+    let template: string
+    let musicList: Music[]
 
-    return musicInfoList.map((musicInfo) => {
-      const text = renderText(template!, musicInfo)
+    // get `template` and `musicList`
+    if (titleParam === null) return []
+    else if (isGPMTitle(titleParam)) {
+      template = config.gpmTemplate
+      musicList = parseGPMTitle(titleParam)
+    } else if (isYTMTitle(titleParam)) {
+      template = config.ytmTemplate
+      musicList = parseYTMTitle(titleParam)
+    } else return []
+
+    return musicList.map((music) => {
+      const text = renderText(template, music)
       const url = renderURL(text, config.hashtags)
       return {
-        ...musicInfo,
+        ...music,
         text,
         url,
       }
     })
-  }, [config, titleParam])
-
-  return patterns
-}
-
-export function Share() {
-  const config = loadConfig()
-  const patterns = useRenderedMusicInfoPatterns(config)
+  }, [config.hashtags, titleParam])
 
   React.useEffect(() => {
-    if (patterns.length === 1) location.href = patterns[0].url
-  }, [patterns])
+    if (renderedMusicList.length === 1) location.href = renderedMusicList[0].url
+  }, [renderedMusicList])
 
-  if (patterns.length === 0) {
+  if (renderedMusicList.length === 0) {
     return (
       <Container>
         <p>共有に失敗しました. 共有の方法をもう一度見直して下さい.</p>
@@ -63,7 +64,13 @@ export function Share() {
           報告していただいた内容は今後のアプリの改善に役立てられます.
         </p>
         <div>
-          <a className="button" href={renderBugReportURL({ config, patterns })}>
+          <a
+            className="button"
+            href={renderBugReportURL({
+              config,
+              patterns: renderedMusicList,
+            })}
+          >
             Twitterで開発者に不具合を報告
           </a>
         </div>
@@ -71,11 +78,11 @@ export function Share() {
     )
   }
 
-  if (patterns.length === 1) {
+  if (renderedMusicList.length === 1) {
     return (
       <Container>
         Twitterを開いています. 自動で開かない場合は以下のボタンを押して下さい.
-        <a className="button" href={patterns[0].url}>
+        <a className="button" href={renderedMusicList[0].url}>
           Twitterを開いて共有
         </a>
       </Container>
@@ -88,7 +95,7 @@ export function Share() {
         曲情報の自動判別に失敗しました. 正しい曲情報を以下から選択して下さい.
       </p>
       <ol className="pattern-list">
-        {patterns.map((pattern, index) => (
+        {renderedMusicList.map((pattern, index) => (
           <li>
             <a className="pattern-link" href={pattern.url}>
               <div className="pattern-link-text">
