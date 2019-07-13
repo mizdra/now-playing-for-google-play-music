@@ -1,13 +1,16 @@
-export type MusicInfo = { artist: string; title: string }
+import { MusicInfo } from '../../common/js/util'
+
+const YTM_TITLE_TAIL = ' を YouTube で見る'
+const GPM_TITLE_TAIL = 'をチェック'
 
 function parseYTMTitle(titleParam: string): MusicInfo[] {
-  const titleHead = titleParam.slice(0, -' を YouTube で見る'.length)
+  const titleHead = titleParam.slice(0, -YTM_TITLE_TAIL.length)
   // 両端のダブルクオテーションをカット
-  return [{ title: titleHead.slice(0, 1).slice(0, -1), artist: '' }]
+  return [{ title: titleHead.slice(0, 1).slice(0, -1) }]
 }
 
 function parseGPMTitle(titleParam: string) {
-  const titleHead = titleParam.slice(0, -5)
+  const titleHead = titleParam.slice(0, -GPM_TITLE_TAIL.length)
 
   // 'の' を基準にアーティスト名と曲名を分ける.
   // 'の' が複数ある場合はその全通りを返す.
@@ -31,9 +34,8 @@ function parseGPMTitle(titleParam: string) {
 export function parseTitle(titleParam: string | null): MusicInfo[] {
   if (titleParam === null) return []
   // YouTube Music では '"silky heart" を YouTube で見る' のような形式になっている
-  if (titleParam.endsWith(' を YouTube で見る'))
-    return parseYTMTitle(titleParam)
+  if (titleParam.endsWith(YTM_TITLE_TAIL)) return parseYTMTitle(titleParam)
   // Google Play Music では '小倉唯のHoney Come!!をチェック' のような形式になっている
-  if (titleParam.endsWith('をチェック')) return parseGPMTitle(titleParam)
+  if (titleParam.endsWith(GPM_TITLE_TAIL)) return parseGPMTitle(titleParam)
   return []
 }

@@ -1,8 +1,13 @@
 import React from 'react'
-import { renderText, renderURL, renderBugReportURL } from '../../common/js/util'
+import {
+  renderText,
+  renderURL,
+  renderBugReportURL,
+  MusicInfo,
+} from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
-import { MusicInfo, parseTitle } from '../../ext/js/parser'
+import { parseTitle } from '../../ext/js/parser'
 
 type RenderedMusicInfo = MusicInfo & {
   text: string
