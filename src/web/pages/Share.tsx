@@ -7,7 +7,7 @@ import {
 } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
-import { parseTitle } from '../../ext/js/parser'
+import { parseTitle } from '../js/parser'
 
 type RenderedMusicInfo = MusicInfo & {
   text: string
