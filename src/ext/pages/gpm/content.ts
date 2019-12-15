@@ -22,7 +22,7 @@ async function share() {
 // DOM の構築完了を待ってから共有ボタンをプレイヤー (画面下部の操作バー) に挿入
 function insertShareButton() {
   const $wrapper = document.getElementById('material-player-right-wrapper')! // 右下のツールボックス
-  const $queue = $wrapper.querySelector("#queue")! // 次に再生される曲を表示するボタン
+  const $queue = $wrapper.querySelector('#queue')! // 次に再生される曲を表示するボタン
 
   // 共有ボタンを作成
   const $shareButton = document.createElement('paper-icon-button')
