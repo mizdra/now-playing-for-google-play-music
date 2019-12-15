@@ -8,7 +8,7 @@
   "permissions": ["storage"],
   "content_scripts": [
     {
-      "matches": ["https://play.google.com/*"],
+      "matches": ["https://play.google.com/music/listen*"],
       "run_at": "document_idle",
       "js": ["./pages/gpm/content.js"]
     },
