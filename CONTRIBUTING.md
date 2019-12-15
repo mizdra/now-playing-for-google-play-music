@@ -7,13 +7,13 @@ $ export NEXT_VERSION=v1.0.2
 $ git-chglog --next-tag $NEXT_VERSION $NEXT_VERSION
 
 ## Update version & Add git tag
+$ vim vim package.json
 $ vim src/ext/manifest.json
-$ git add .
-$ yarn version --new-version $NEXT_VERSION
+$ git commit -a -m $NEXT_VERSION
+$ git tag -a -m $NEXT_VERSION $NEXT_VERSION
 
 ## Push
-$ git push
-$ git push --tags
+$ git push --follow-tags
 
 ## Generate zip
 $ rm -rf dist
