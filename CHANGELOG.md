@@ -2,15 +2,15 @@
 ## [v1.2.0] - 2019-12-15
 
 ### Security Fixes
-- Request access to the narrowest permissions (#31)
-- Fix CVE-2019-10747 (#30)
-- Fix CVE-2019-10746 (#14)
+- Request access to the narrowest permissions ([#31](https://github.com/mizdra/now-playing-for-google-play-music/issues/31))
+- Fix CVE-2019-10747 ([#30](https://github.com/mizdra/now-playing-for-google-play-music/issues/30))
+- Fix CVE-2019-10746 ([#14](https://github.com/mizdra/now-playing-for-google-play-music/issues/14))
 
 ### Bug Fixes
-- Share button is not displayed on GPM (#12), @prprhyt
+- Share button is not displayed on GPM ([#12](https://github.com/mizdra/now-playing-for-google-play-music/issues/12)), [@prprhyt](https://github.com/prprhyt)
 
 ### Features
-- Support Youtube Music for Android (#10)
+- Support Youtube Music for Android ([#10](https://github.com/mizdra/now-playing-for-google-play-music/issues/10))
   
 
 <a name="v1.1.1"></a>
