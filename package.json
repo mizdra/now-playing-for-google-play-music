@@ -13,8 +13,9 @@
     "dev": "run-p -l dev:*",
     "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
     "dev:web": "webpack-dev-server --config webpack.web.js --mode development",
-    "typecheck": "tsc -p . --noEmit",
-    "format": "prettier -l 'src/**/*.{js,css,html}'"
+    "check": "run-p -l -c 'check:tsc --pretty' check:prettier",
+    "check:tsc": "tsc --noEmit",
+    "check:prettier": "prettier --check 'src/**/*.{js,css,html}'"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.3",
