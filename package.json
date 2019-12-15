@@ -15,7 +15,7 @@
     "dev:web": "webpack-dev-server --config webpack.web.js --mode development",
     "check": "run-p -l -c 'check:tsc --pretty' check:prettier",
     "check:tsc": "tsc --noEmit",
-    "check:prettier": "prettier --check 'src/**/*.{js,css,html}'"
+    "check:prettier": "prettier --check 'src/**/*.{js,ts,tsx,css,html}'"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.3",
