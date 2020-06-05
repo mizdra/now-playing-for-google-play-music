@@ -27,23 +27,25 @@ const webConfig = merge(baseConfig, {
       template: join(webSrcPath, 'index.html'),
       inject: true,
     }),
-    new CopyWebpackPlugin([
-      {
-        from: join(webSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
-        to: webDistPath,
-        context: webSrcPath,
-      },
-      {
-        from: join(webSrcPath, `_redirects`),
-        to: webDistPath,
-        context: webSrcPath,
-      },
-      {
-        from: join(commonSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
-        to: webDistPath,
-        context: commonSrcPath,
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: join(webSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+          to: webDistPath,
+          context: webSrcPath,
+        },
+        {
+          from: join(webSrcPath, `_redirects`),
+          to: webDistPath,
+          context: webSrcPath,
+        },
+        {
+          from: join(commonSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+          to: webDistPath,
+          context: commonSrcPath,
+        },
+      ]
+    }),
     new GenerateSW({
       swDest: 'sw.js',
       exclude: [/_redirects$/],

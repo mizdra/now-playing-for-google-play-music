@@ -22,18 +22,20 @@ const extConfig = merge(baseConfig, {
   },
 
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: join(extSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
-        to: extDistPath,
-        context: extSrcPath,
-      },
-      {
-        from: join(commonSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
-        to: extDistPath,
-        context: commonSrcPath,
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: join(extSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+          to: extDistPath,
+          context: extSrcPath,
+        },
+        {
+          from: join(commonSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+          to: extDistPath,
+          context: commonSrcPath,
+        },
+      ]
+    }),
   ],
 })
 
