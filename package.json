@@ -39,6 +39,6 @@
     "milligram": "^1.4.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-markdown": "^4.3.1"
+    "react-markdown": "^5.0.3"
   }
 }
