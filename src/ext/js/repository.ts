@@ -39,7 +39,7 @@ export function saveConfig(config: Config) {
     ytmTemplate: config.ytmTemplate,
     hashtags: config.hashtags,
   }
-  return new Promise((resolve) => {
+  return new Promise<void>((resolve) => {
     chrome.storage.sync.set(normalizedConfig, () => resolve())
   })
 }
