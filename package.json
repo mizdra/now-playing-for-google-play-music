@@ -18,7 +18,7 @@
     "check:prettier": "prettier --check 'src/**/*.{js,ts,tsx,css,html}'"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.127",
+    "@types/chrome": "^0.0.129",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "copy-webpack-plugin": "^6.4.1",
