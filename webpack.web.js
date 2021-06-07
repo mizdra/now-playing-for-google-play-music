@@ -31,6 +31,9 @@ const webConfig = merge(baseConfig, {
       patterns: [
         {
           from: join(webSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+          globOptions: {
+            ignore: [join(webSrcPath, 'index.html')]
+          },
           to: webDistPath,
           context: webSrcPath,
         },
