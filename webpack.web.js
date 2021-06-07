@@ -44,13 +44,17 @@ const webConfig = merge(baseConfig, {
           to: webDistPath,
           context: commonSrcPath,
         },
-      ]
+      ],
     }),
     new GenerateSW({
       swDest: 'sw.js',
       exclude: [/_redirects$/],
     }),
   ],
+
+  resolve: {
+    fallback: { path: require.resolve('path-browserify') },
+  },
 
   devServer: {
     historyApiFallback: true,
