@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import gfm from 'remark-gfm'
 
-
 const MD = `
 ## Features
 - Share your music to **Twitter**
