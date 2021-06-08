@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
+const { DefinePlugin } = require('webpack');
 
 const {
   staticFileExtensions,
@@ -31,6 +32,9 @@ const webConfig = merge(baseConfig, {
       patterns: [
         {
           from: join(webSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
+          globOptions: {
+            ignore: [join(webSrcPath, 'index.html')]
+          },
           to: webDistPath,
           context: webSrcPath,
         },
@@ -44,13 +48,23 @@ const webConfig = merge(baseConfig, {
           to: webDistPath,
           context: commonSrcPath,
         },
-      ]
+      ],
     }),
     new GenerateSW({
       swDest: 'sw.js',
       exclude: [/_redirects$/],
     }),
+    // ref: https://github.com/remarkjs/react-markdown/issues/189
+    new DefinePlugin({
+      process: {
+        cwd: () => {},
+      },
+    })
   ],
+
+  resolve: {
+    fallback: { path: require.resolve('path-browserify') },
+  },
 
   devServer: {
     historyApiFallback: true,

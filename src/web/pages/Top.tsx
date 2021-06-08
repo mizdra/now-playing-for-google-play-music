@@ -1,6 +1,8 @@
 import React from 'react'
 import { Container } from '../templates/Container'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import gfm from 'remark-gfm'
 
 const MD = `
 ## Features
@@ -72,7 +74,7 @@ export function Top() {
       <Container>
         <main>
           <section>
-            <ReactMarkdown source={MD} escapeHtml={false} />
+            <ReactMarkdown rehypePlugins={[gfm, rehypeRaw]}>{MD}</ReactMarkdown>
           </section>
         </main>
       </Container>

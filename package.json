@@ -12,7 +12,7 @@
     "build:web": "webpack --config webpack.web.js --mode production",
     "dev": "run-p -l dev:*",
     "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
-    "dev:web": "webpack-dev-server --config webpack.web.js --mode development",
+    "dev:web": "webpack-cli serve --config webpack.web.js --mode development",
     "check": "run-p -l -c 'check:tsc --pretty' check:prettier",
     "check:tsc": "tsc --noEmit",
     "check:prettier": "prettier --check 'src/**/*.{js,ts,tsx,css,html}'"
@@ -21,24 +21,27 @@
     "@types/chrome": "^0.0.143",
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
-    "copy-webpack-plugin": "^6.4.1",
+    "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
-    "html-webpack-plugin": "^4.5.2",
+    "html-webpack-plugin": "^5.3.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.0",
     "style-loader": "^2.0.0",
-    "ts-loader": "^8.1.0",
+    "ts-loader": "^9.2.3",
     "typescript": "^4.3.2",
-    "webpack": "^4.44.2",
+    "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3",
+    "webpack-merge": "^5.8.0",
     "workbox-webpack-plugin": "^6.1.5"
   },
   "dependencies": {
     "milligram": "^1.4.1",
+    "path-browserify": "^1.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-markdown": "^5.0.3"
+    "react-markdown": "^6.0.2",
+    "rehype-raw": "^5.1.0",
+    "remark-gfm": "^1.0.0"
   }
 }
