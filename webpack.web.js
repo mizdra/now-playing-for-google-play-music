@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
+const { DefinePlugin } = require('webpack');
 
 const {
   staticFileExtensions,
@@ -53,6 +54,12 @@ const webConfig = merge(baseConfig, {
       swDest: 'sw.js',
       exclude: [/_redirects$/],
     }),
+    // ref: https://github.com/remarkjs/react-markdown/issues/189
+    new DefinePlugin({
+      process: {
+        cwd: () => {},
+      },
+    })
   ],
 
   resolve: {
