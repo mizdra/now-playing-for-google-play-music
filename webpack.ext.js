@@ -13,7 +13,6 @@ const {
 const extConfig = merge(baseConfig, {
   entry: {
     'pages/options': [join(extSrcPath, 'pages/options.tsx')],
-    'pages/gpm/content': [join(extSrcPath, 'pages/gpm/content.ts')],
     'pages/ytm/content': [join(extSrcPath, 'pages/ytm/content.ts')],
   },
   output: {

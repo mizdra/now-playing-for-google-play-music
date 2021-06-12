@@ -5,12 +5,6 @@ fieldset {
   padding: 0 20px !important;
   margin-bottom: 2.5rem !important;
 }
-fieldset.gpm {
-  border-color: #ff6c6c;
-}
-fieldset.gpm > legend {
-  color: #ff6c6c;
-}
 fieldset.ytm {
   border-color: #ff0e0e;
 }

@@ -9,13 +9,11 @@ import { Config } from '../../common/js/config'
 import './options.css'
 
 export const LOADING_CONFIG = {
-  gpmTemplate: 'Loading...',
   ytmTemplate: 'Loading...',
   hashtags: 'Loading...',
 }
 
 const AVAILABLE_VARIABLES: AvailableVariables = {
-  gpm: ['title', 'artist', 'album', 'playCount'],
   ytm: ['title', 'artist', 'album'],
 }
 

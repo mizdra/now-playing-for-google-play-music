@@ -7,7 +7,6 @@ import {
 import { Container } from '../templates/Container'
 
 const AVAILABLE_VARIABLES: AvailableVariables = {
-  gpm: ['title', 'artist'],
   ytm: ['title'],
 }
 

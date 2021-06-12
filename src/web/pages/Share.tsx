@@ -7,12 +7,7 @@ import {
 } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
-import {
-  isYTMTitle,
-  parseYTMTitle,
-  isGPMTitle,
-  parseGPMTitle,
-} from '../js/parser'
+import { isYTMTitle, parseYTMTitle } from '../js/parser'
 
 type Props = {
   params: {
@@ -32,10 +27,7 @@ export function Share(props: Props) {
 
     // get `template` and `musicList`
     if (titleParam === null) return []
-    else if (isGPMTitle(titleParam)) {
-      template = config.gpmTemplate
-      musicList = parseGPMTitle(titleParam)
-    } else if (isYTMTitle(titleParam)) {
+    else if (isYTMTitle(titleParam)) {
       template = config.ytmTemplate
       musicList = parseYTMTitle(titleParam)
     } else return []
