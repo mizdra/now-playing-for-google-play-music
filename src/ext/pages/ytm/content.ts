@@ -33,13 +33,20 @@ function insertShareButton() {
 
 // プレイヤーが読み込まれるまで待機する
 async function waitPlayerLoaded() {
-  // #right-controls-buttons が読み込まれたら, プレイヤーが読み込まれたものとして扱う
-  while (document.querySelector('ytmusic-player-bar .right-controls-buttons') === null) {
+  let count = 0;
+  while (count < 30) {
+    console.log(count);
+    // #right-controls-buttons が読み込まれたら, プレイヤーが読み込まれたものとして扱う
+    if (document.querySelector('ytmusic-player-bar .right-controls-buttons')) {
+      return;
+    }
     await sleep(1000);
+    count++;
   }
+  throw new Error('`ytmusic-player-bar .right-controls-buttons` is not found.');
 }
 
 // DOMContentLoaded の後もDOMが動的に挿入されていくので,
 // プレイヤー が読み込まれるまでポーリングして, 挿入された
 // タイミングで insertShareButton を呼び出す.
-waitPlayerLoaded().then(insertShareButton);
+waitPlayerLoaded().then(insertShareButton).catch(console.error);
