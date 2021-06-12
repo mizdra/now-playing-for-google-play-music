@@ -1,79 +1,75 @@
-import React from 'react'
-import { Config } from '../js/config'
-import './ConfigForm.css'
+import React from 'react';
+import { Config } from '../js/config';
+import './ConfigForm.css';
 
-export type Variable = 'title' | 'artist' | 'album' | 'playCount'
+export type Variable = 'title' | 'artist' | 'album' | 'playCount';
 
 export type AvailableVariables = {
-  ytm?: Variable[]
-}
+  ytm?: Variable[];
+};
 
 const DESCRIPTIONS: { [key in Variable]: string } = {
   title: 'The title of music',
   artist: 'The artist name of music',
   album: 'The album name of music',
   playCount: 'The play count of music',
-}
+};
 
 function createVariableList(variables: Variable[]): React.ReactElement[] {
-  if (variables.length === 0) return []
+  if (variables.length === 0) return [];
   const $li = (
     <li key={variables[0]}>
       <code>{'${' + variables[0] + '}'}</code>: {DESCRIPTIONS[variables[0]]}
     </li>
-  )
-  return [$li, ...createVariableList(variables.slice(1))]
+  );
+  return [$li, ...createVariableList(variables.slice(1))];
 }
 
 export type Props = {
-  availableVariables: AvailableVariables
-  disabled?: boolean
-  defaultConfig: Config
-  onSave: (newConfig: Config) => void
-}
+  availableVariables: AvailableVariables;
+  disabled?: boolean;
+  defaultConfig: Config;
+  onSave: (newConfig: Config) => void;
+};
 
 export function ConfigForm(props: Props) {
-  const [actionMessage, setActionMessage] = React.useState('')
-  const [newConfig, setNewConfig] = React.useState({ ...props.defaultConfig })
+  const [actionMessage, setActionMessage] = React.useState('');
+  const [newConfig, setNewConfig] = React.useState({ ...props.defaultConfig });
 
   React.useEffect(() => {
-    setNewConfig(props.defaultConfig)
-  }, [props.defaultConfig])
+    setNewConfig(props.defaultConfig);
+  }, [props.defaultConfig]);
 
   function handleChange(type: 'ytmTemplate' | 'hashtags') {
     return (e: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>) => {
       setNewConfig({
         ...newConfig,
         [type]: e.currentTarget.value,
-      })
-    }
+      });
+    };
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    props.onSave(newConfig)
-    setActionMessage('Saved!')
+    e.preventDefault();
+    props.onSave(newConfig);
+    setActionMessage('Saved!');
     setTimeout(() => {
-      setActionMessage('')
-    }, 3000)
+      setActionMessage('');
+    }, 3000);
   }
 
-  const $fieldsetList = []
+  const $fieldsetList = [];
   if (props.availableVariables.ytm) {
     $fieldsetList.push(
       <fieldset key="ytm" className="ytm">
         <legend>Youtube Music</legend>
         <h3>Template</h3>
-        <textarea
-          value={newConfig.ytmTemplate}
-          disabled={props.disabled}
-          onChange={handleChange('ytmTemplate')}
-        />
+        <textarea value={newConfig.ytmTemplate} disabled={props.disabled} onChange={handleChange('ytmTemplate')} />
 
         <h4>Available variables</h4>
         <ul>{createVariableList(props.availableVariables.ytm)}</ul>
       </fieldset>,
-    )
+    );
   }
 
   return (
@@ -83,17 +79,12 @@ export function ConfigForm(props: Props) {
       {$fieldsetList}
 
       <h3>Hash tags</h3>
-      <input
-        type="text"
-        value={newConfig.hashtags}
-        disabled={props.disabled}
-        onChange={handleChange('hashtags')}
-      />
+      <input type="text" value={newConfig.hashtags} disabled={props.disabled} onChange={handleChange('hashtags')} />
 
       <div>
         <input disabled={props.disabled} type="submit" value="Save" />
         <span className="action-message">{actionMessage}</span>
       </div>
     </form>
-  )
+  );
 }

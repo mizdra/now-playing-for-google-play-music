@@ -7,18 +7,20 @@
   "author": "mizdra <pp.mizdra@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "run-p -l build:*",
+    "build": "run-s -c build:*",
     "build:ext": "webpack --config webpack.ext.js --mode production",
     "build:web": "webpack --config webpack.web.js --mode production",
     "dev": "run-p -l dev:*",
     "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
     "dev:web": "webpack-cli serve --config webpack.web.js --mode development",
-    "check": "run-p -l -c 'check:tsc --pretty' check:prettier",
-    "check:tsc": "tsc --noEmit",
-    "check:prettier": "prettier --check 'src/**/*.{js,ts,tsx,css,html}'"
+    "lint": "run-s -c lint:*",
+    "lint:tsc": "tsc --noEmit",
+    "lint:prettier": "prettier --check ."
   },
+  "prettier": "@mizdra/prettier-config-mizdra",
   "renovate": "github>mizdra/renovate-config-mizdra",
   "devDependencies": {
+    "@mizdra/prettier-config-mizdra": "^0.3.0",
     "@types/chrome": "^0.0.145",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Container } from '../templates/Container'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
-import gfm from 'remark-gfm'
+import React from 'react';
+import { Container } from '../templates/Container';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import gfm from 'remark-gfm';
 
 const MD = `
 ## Features
@@ -43,18 +43,18 @@ const MD = `
    3. Tap <code>Share</code> ( Japanese <code>共有</code>)
    4. Select #NowPlaying (<img src="./img/logo.svg" alt="#NowPlaying Icon" class="icon" />)
    5. Let's Tweet!
-`
+`;
 
 function useInstalled() {
   const installed = React.useMemo(() => {
-    const params = new URLSearchParams(location.search)
-    return params.get('utm_source') === 'homescreen'
-  }, [location.search])
-  return installed
+    const params = new URLSearchParams(location.search);
+    return params.get('utm_source') === 'homescreen';
+  }, [location.search]);
+  return installed;
 }
 
 export function Top() {
-  const installed = useInstalled()
+  const installed = useInstalled();
 
   return (
     <div>
@@ -76,5 +76,5 @@ export function Top() {
         </main>
       </Container>
     </div>
-  )
+  );
 }

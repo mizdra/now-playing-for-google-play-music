@@ -1,33 +1,30 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { loadConfig, saveConfig } from '../js/repository'
-import {
-  ConfigForm,
-  AvailableVariables,
-} from '../../common/organisms/ConfigForm'
-import { Config } from '../../common/js/config'
-import './options.css'
+import React from 'react';
+import { render } from 'react-dom';
+import { loadConfig, saveConfig } from '../js/repository';
+import { ConfigForm, AvailableVariables } from '../../common/organisms/ConfigForm';
+import { Config } from '../../common/js/config';
+import './options.css';
 
 export const LOADING_CONFIG = {
   ytmTemplate: 'Loading...',
   hashtags: 'Loading...',
-}
+};
 
 const AVAILABLE_VARIABLES: AvailableVariables = {
   ytm: ['title', 'artist', 'album'],
-}
+};
 
 function useConfig() {
-  const [config, setConfig] = React.useState<Config | null>(null)
+  const [config, setConfig] = React.useState<Config | null>(null);
   React.useEffect(() => {
-    loadConfig().then(setConfig)
-  }, [])
+    loadConfig().then(setConfig);
+  }, []);
 
-  return config
+  return config;
 }
 
 function Options() {
-  const config = useConfig()
+  const config = useConfig();
 
   return (
     <ConfigForm
@@ -36,7 +33,7 @@ function Options() {
       defaultConfig={config ? config : LOADING_CONFIG}
       onSave={saveConfig}
     />
-  )
+  );
 }
 
-render(<Options />, document.getElementById('app'))
+render(<Options />, document.getElementById('app'));

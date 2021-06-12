@@ -1,51 +1,46 @@
-import React from 'react'
-import {
-  renderText,
-  renderURL,
-  renderBugReportURL,
-  Music,
-} from '../../common/js/util'
-import { loadConfig } from '../js/repository'
-import { Container } from '../templates/Container'
-import { isYTMTitle, parseYTMTitle } from '../js/parser'
+import React from 'react';
+import { renderText, renderURL, renderBugReportURL, Music } from '../../common/js/util';
+import { loadConfig } from '../js/repository';
+import { Container } from '../templates/Container';
+import { isYTMTitle, parseYTMTitle } from '../js/parser';
 
 type Props = {
   params: {
-    title: string | null
-    text: string | null
-    url: string | null
-  }
-}
+    title: string | null;
+    text: string | null;
+    url: string | null;
+  };
+};
 
 export function Share(props: Props) {
-  const config = loadConfig()
-  const titleParam = props.params.title
+  const config = loadConfig();
+  const titleParam = props.params.title;
 
   const renderedMusicList = React.useMemo(() => {
-    let template: string
-    let musicList: Music[]
+    let template: string;
+    let musicList: Music[];
 
     // get `template` and `musicList`
-    if (titleParam === null) return []
+    if (titleParam === null) return [];
     else if (isYTMTitle(titleParam)) {
-      template = config.ytmTemplate
-      musicList = parseYTMTitle(titleParam)
-    } else return []
+      template = config.ytmTemplate;
+      musicList = parseYTMTitle(titleParam);
+    } else return [];
 
     return musicList.map((music) => {
-      const text = renderText(template, music)
-      const url = renderURL(text, config.hashtags)
+      const text = renderText(template, music);
+      const url = renderURL(text, config.hashtags);
       return {
         ...music,
         text,
         url,
-      }
-    })
-  }, [config.hashtags, titleParam])
+      };
+    });
+  }, [config.hashtags, titleParam]);
 
   React.useEffect(() => {
-    if (renderedMusicList.length === 1) location.href = renderedMusicList[0].url
-  }, [renderedMusicList])
+    if (renderedMusicList.length === 1) location.href = renderedMusicList[0].url;
+  }, [renderedMusicList]);
 
   if (renderedMusicList.length === 0) {
     return (
@@ -61,13 +56,12 @@ export function Share(props: Props) {
             href={renderBugReportURL({
               config,
               patterns: renderedMusicList,
-            })}
-          >
+            })}>
             Twitterで開発者に不具合を報告
           </a>
         </div>
       </Container>
-    )
+    );
   }
 
   if (renderedMusicList.length === 1) {
@@ -78,14 +72,12 @@ export function Share(props: Props) {
           Twitterを開いて共有
         </a>
       </Container>
-    )
+    );
   }
 
   return (
     <Container>
-      <p>
-        曲情報の自動判別に失敗しました. 正しい曲情報を以下から選択して下さい.
-      </p>
+      <p>曲情報の自動判別に失敗しました. 正しい曲情報を以下から選択して下さい.</p>
       <ol className="pattern-list">
         {renderedMusicList.map((pattern, index) => (
           <li>
@@ -99,5 +91,5 @@ export function Share(props: Props) {
         ))}
       </ol>
     </Container>
-  )
+  );
 }
