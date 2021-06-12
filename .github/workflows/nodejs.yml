@@ -1,4 +1,4 @@
-name: Node CI
+name: nodejs
 
 on: [push]
 
@@ -6,21 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '16.x'
 
-      - uses: actions/cache@v1
-        id: cache
+      - uses: actions/cache@v2
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.OS }}-node-
-
-      - name: yarn install
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install
+          path: ${YARN_CACHE_FOLDER}
+          key: ${{ runner.os }}-yarn-cache-v1
+      - run: yarn install --frozen-lockfile
 
       - run: yarn run lint
       - run: yarn run build
