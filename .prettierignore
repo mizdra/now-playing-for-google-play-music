@@ -1,2 +1,4 @@
 /dist
+/web-ext-artifacts
 /.chglog/CHANGELOG.tpl.md
+/source.zip

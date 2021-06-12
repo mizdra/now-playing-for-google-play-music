@@ -9,7 +9,11 @@
   "scripts": {
     "build": "run-s -c build:*",
     "build:ext": "webpack --config webpack.ext.js --mode production",
+    "postbuild:ext": "web-ext lint  --config .web-ext-config.js",
     "build:web": "webpack --config webpack.web.js --mode production",
+    "package": "run-s -c build:ext package:*",
+    "package:web-ext": "web-ext build --config .web-ext-config.js",
+    "package:git-archive": "git archive HEAD -o source.zip",
     "dev": "run-p -l dev:*",
     "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
     "dev:web": "webpack-cli serve --config webpack.web.js --mode development",
