@@ -22,14 +22,5 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: yarn run check:tsc
-        run: yarn run check:tsc
-
-      - name: yarn run check:prettier
-        run: yarn run check:prettier
-
-      - name: yarn run build:ext
-        run: yarn run build:ext
-
-      - name: yarn run build:web
-        run: yarn run build:web
+      - run: yarn run lint
+      - run: yarn run build
