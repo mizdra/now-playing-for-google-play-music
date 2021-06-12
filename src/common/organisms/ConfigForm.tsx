@@ -5,7 +5,6 @@ import './ConfigForm.css'
 export type Variable = 'title' | 'artist' | 'album' | 'playCount'
 
 export type AvailableVariables = {
-  gpm?: Variable[]
   ytm?: Variable[]
 }
 
@@ -41,7 +40,7 @@ export function ConfigForm(props: Props) {
     setNewConfig(props.defaultConfig)
   }, [props.defaultConfig])
 
-  function handleChange(type: 'gpmTemplate' | 'ytmTemplate' | 'hashtags') {
+  function handleChange(type: 'ytmTemplate' | 'hashtags') {
     return (e: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>) => {
       setNewConfig({
         ...newConfig,
@@ -60,22 +59,6 @@ export function ConfigForm(props: Props) {
   }
 
   const $fieldsetList = []
-  if (props.availableVariables.gpm) {
-    $fieldsetList.push(
-      <fieldset key="gpm" className="gpm">
-        <legend>Google Play Music</legend>
-        <h3>Template</h3>
-        <textarea
-          value={newConfig.gpmTemplate}
-          disabled={props.disabled}
-          onChange={handleChange('gpmTemplate')}
-        />
-
-        <h4>Available variables</h4>
-        <ul>{createVariableList(props.availableVariables.gpm)}</ul>
-      </fieldset>,
-    )
-  }
   if (props.availableVariables.ytm) {
     $fieldsetList.push(
       <fieldset key="ytm" className="ytm">
