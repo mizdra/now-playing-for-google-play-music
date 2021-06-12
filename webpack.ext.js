@@ -1,14 +1,8 @@
-const { join } = require('path')
-const { merge } = require('webpack-merge')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { join } = require('path');
+const { merge } = require('webpack-merge');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const {
-  staticFileExtensions,
-  commonSrcPath,
-  extSrcPath,
-  extDistPath,
-  baseConfig,
-} = require('./webpack.base')
+const { staticFileExtensions, commonSrcPath, extSrcPath, extDistPath, baseConfig } = require('./webpack.base');
 
 const extConfig = merge(baseConfig, {
   entry: {
@@ -33,9 +27,9 @@ const extConfig = merge(baseConfig, {
           to: extDistPath,
           context: commonSrcPath,
         },
-      ]
+      ],
     }),
   ],
-})
+});
 
-module.exports = extConfig
+module.exports = extConfig;

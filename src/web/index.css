@@ -26,11 +26,7 @@ body {
   /* background: #1d1a1f; */
   border-bottom: 1px solid #ddd;
   color: #fff;
-  background: radial-gradient(
-    circle farthest-corner at center,
-    #ff6565 40px,
-    #e67575 350px
-  );
+  background: radial-gradient(circle farthest-corner at center, #ff6565 40px, #e67575 350px);
 }
 
 .pattern-list {

@@ -4,15 +4,14 @@
   <img alt="Logo"src=./src/common/img/logo-128.png?raw=true">
 </a>
 
-
 # #NowPlaying for Google Play Music
 
 It's tools to share music playing on Youtube Music to SNS.
 
 </div>
 
-
 ## Features
+
 - Share your music to **Twitter**
 - Support **Youtube Music**
 - Customizable template with variable
@@ -21,21 +20,20 @@ It's tools to share music playing on Youtube Music to SNS.
   - <code>${album}</code>: The album name of music
 - Support mobile platform
 
-
 ## Variables supported by each platform
 
 |            Platform            |                Youtube Music                |
 | :----------------------------: | :-----------------------------------------: |
 | Desktop <br> (Chrome, Firefox) | `${title}` <br> `${artist}` <br> `${album}` |
 |     Android <sup>[1]</sup>     |                 `${title}`                  |
-|              iOS               |         🚫  <br>  Not yet supported         |
+|              iOS               |          🚫 <br> Not yet supported          |
 
 <sup>[1]</sup> Currently, only Japanese language environment is supported.
-
 
 ## Installation
 
 ### Desktop
+
 - [Chrome](https://chrome.google.com/webstore/detail/nowplaying-for-google-pla/nhpanomgefidcljmcmkbanhoomaglmlk)
 - [Firefox](https://addons.mozilla.org/ja/firefox/addon/nowplaying-for-google-pla)
 
@@ -50,7 +48,6 @@ It's tools to share music playing on Youtube Music to SNS.
    3. Tap <code>Share</code> ( Japanese <code>共有</code>)
    4. Select #NowPlaying (<img src="./src/common/img/logo.svg" alt="#NowPlaying Icon" width="16" />)
    5. Let's Tweet!
-
 
 ## Screenshots
 

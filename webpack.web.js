@@ -1,17 +1,11 @@
-const { join } = require('path')
-const { merge } = require('webpack-merge')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { GenerateSW } = require('workbox-webpack-plugin')
+const { join } = require('path');
+const { merge } = require('webpack-merge');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
-const {
-  staticFileExtensions,
-  commonSrcPath,
-  webSrcPath,
-  webDistPath,
-  baseConfig,
-} = require('./webpack.base')
+const { staticFileExtensions, commonSrcPath, webSrcPath, webDistPath, baseConfig } = require('./webpack.base');
 
 const webConfig = merge(baseConfig, {
   entry: {
@@ -33,7 +27,7 @@ const webConfig = merge(baseConfig, {
         {
           from: join(webSrcPath, `**/*.{${staticFileExtensions.join(',')}}`),
           globOptions: {
-            ignore: [join(webSrcPath, 'index.html')]
+            ignore: [join(webSrcPath, 'index.html')],
           },
           to: webDistPath,
           context: webSrcPath,
@@ -59,7 +53,7 @@ const webConfig = merge(baseConfig, {
       process: {
         cwd: () => {},
       },
-    })
+    }),
   ],
 
   resolve: {
@@ -69,6 +63,6 @@ const webConfig = merge(baseConfig, {
   devServer: {
     historyApiFallback: true,
   },
-})
+});
 
-module.exports = webConfig
+module.exports = webConfig;
