@@ -54,7 +54,6 @@ It's tools to share music playing on Youtube Music to SNS.
 
 ## Screenshots
 
-![Screenshot 1](./src/common/img/screenshot1.png?raw=true 'Screenshot 1')
+![Screenshot 4](./src/common/img/screenshot1.png?raw=true 'Screenshot 1')
 ![Screenshot 2](./src/common/img/screenshot2.png?raw=true 'Screenshot 2')
 ![Screenshot 3](./src/common/img/screenshot3.png?raw=true 'Screenshot 3')
-![Screenshot 4](./src/common/img/screenshot4.png?raw=true 'Screenshot 4')
