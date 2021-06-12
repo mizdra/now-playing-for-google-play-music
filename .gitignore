@@ -93,3 +93,5 @@ typings/
 ## User Config
 /ext.zip
 /dist
+/web-ext-artifacts
+/source.zip

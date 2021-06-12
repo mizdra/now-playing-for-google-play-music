@@ -1,7 +1,7 @@
 {
   "name": "now-playing-for-google-play-music",
   "version": "1.2.0",
-  "description": "Share music playing on Google Play Music to SNS.",
+  "description": "Share music playing on Youtube Music to SNS.",
   "main": "index.js",
   "repository": "https://github.com/mizdra/now-playing-for-google-play-music",
   "author": "mizdra <pp.mizdra@gmail.com>",
@@ -9,7 +9,11 @@
   "scripts": {
     "build": "run-s -c build:*",
     "build:ext": "webpack --config webpack.ext.js --mode production",
+    "postbuild:ext": "web-ext lint  --config .web-ext-config.js",
     "build:web": "webpack --config webpack.web.js --mode production",
+    "package": "run-s -c build:ext package:*",
+    "package:web-ext": "web-ext build --config .web-ext-config.js",
+    "package:git-archive": "git archive HEAD -o source.zip",
     "dev": "run-p -l dev:*",
     "dev:ext": "webpack --watch --config webpack.ext.js --mode development",
     "dev:web": "webpack-cli serve --config webpack.web.js --mode development",
@@ -32,6 +36,7 @@
     "style-loader": "^2.0.0",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.2",
+    "web-ext": "^6.1.0",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
