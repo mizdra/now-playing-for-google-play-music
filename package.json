@@ -19,7 +19,8 @@
     "dev:web": "webpack-cli serve --config webpack.web.js --mode development",
     "lint": "run-s -c lint:*",
     "lint:tsc": "tsc --noEmit",
-    "lint:prettier": "prettier --check ."
+    "lint:prettier": "prettier --check .",
+    "test": "jest"
   },
   "prettier": "@mizdra/prettier-config-mizdra",
   "renovate": "github>mizdra/renovate-config-mizdra",
