@@ -7,22 +7,21 @@ import gfm from 'remark-gfm'
 const MD = `
 ## Features
 - Share your music to **Twitter**
-- Support **Google Play Music** and **Youtube Music**
+- Support **Youtube Music**
 - Customizable template with variable
   - \`\${title}\`: The title of music
   - \`\${artist}\`: The artist name of music
   - \`\${album}\`: The album name of music
-  - \`\${playCount}\`: The play count of music
 - Support mobile platform
 
 
 ## Variables supported by each platform
 
-|            Platform            |                        Google Play Music                        |                Youtube Music                |
-| :----------------------------: | :-------------------------------------------------------------: | :-----------------------------------------: |
-| Desktop <br> (Chrome, Firefox) | \`\${title}\` <br> \`\${artist}\` <br> \`\${album}\` <br> \`\${playCount}\` | \`\${title}\` <br> \`\${artist}\` <br> \`\${album}\` |
-|     Android <sup>[1]</sup>     |                   \`\${title}\` <br> \`\${artist}\`                   |  \`\${title}\`  |
-|              iOS               |           🚫  <br>  Not yet supported             |  🚫  <br>  Not yet supported   |
+|            Platform            |                Youtube Music                |
+| :----------------------------: | :-----------------------------------------: |
+| Desktop <br> (Chrome, Firefox) | \`\${title}\` <br> \`\${artist}\` <br> \`\${album}\` |
+|     Android <sup>[1]</sup>     |  \`\${title}\`  |
+|              iOS               |  🚫  <br>  Not yet supported   |
 
 <sup>[1]</sup> Currently, only Japanese language environment is supported.
 
@@ -38,11 +37,12 @@ const MD = `
 1. Open [now-playing-for-gpm.mizdra.net](https://now-playing-for-gpm.mizdra.net) with Chrome for Android
    1. Tap menu (<img src="./img/more_vert.svg" alt="Menu Icon" class="icon" />)
    2. Tap <code>Add to Home screen</code> ( Japanese: <code>ホーム画面に追加</code> )
-2. Open Google Play Music App for Android
+2. Open Youtube Music App for Android
    1. Play your favorite music
-   2. Tap menu (<img src="./img/more_vert.svg" alt="Menu Icon" class="icon" />) in Google Play Music
-   3. Select #NowPlaying (<img src="./img/logo.svg" alt="#NowPlaying Icon" class="icon" />)
-   4. Let's Tweet!
+   2. Tap menu (<img src="./img/more_vert.svg" alt="Menu Icon" class="icon" />) in Youtube Music
+   3. Tap <code>Share</code> ( Japanese <code>共有</code>)
+   4. Select #NowPlaying (<img src="./img/logo.svg" alt="#NowPlaying Icon" class="icon" />)
+   5. Let's Tweet!
 `
 
 function useInstalled() {
@@ -62,7 +62,7 @@ export function Top() {
         <img src="/img/logo.svg" alt="アプリのロゴ" />
         <h1>#NowPlaying for Google Play Music</h1>
         <p>
-          It's tools to share music playing on Google Play Music / Youtube Music
+          It's tools to share music playing on Youtube Music
           to SNS.
         </p>
         {installed && (
