@@ -1,7 +1,6 @@
-/* 
- * Youtube Music内で使われているシェアアイコンは向きを反転させているので,
- * 拡張機能で追加したボタンもそれに合わせる
- */
-#now-playing-for-google-play-music__share-button {
-  transform: scale(-1, 1);
+/** 音量ボタンなどは画面幅が小さくなったら隠れるようになっているので、共有ボタンもそれに倣う */
+@media screen and (max-width: 1149px) {
+  .right-controls-buttons.ytmusic-player-bar .share.ytmusic-player-bar {
+    display: none;
+  }
 }
