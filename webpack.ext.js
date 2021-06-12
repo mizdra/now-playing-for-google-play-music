@@ -1,20 +1,23 @@
 const { join } = require('path');
-const { merge } = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const { staticFileExtensions, commonSrcPath, extSrcPath, extDistPath, baseConfig } = require('./webpack.base');
 
-const extConfig = merge(baseConfig, {
+const extConfig = {
+  ...baseConfig,
   entry: {
+    ...(baseConfig.entry ?? {}),
     'pages/options': [join(extSrcPath, 'pages/options.tsx')],
     'pages/ytm/content': [join(extSrcPath, 'pages/ytm/content.ts')],
   },
   output: {
+    ...(baseConfig.output ?? {}),
     path: extDistPath,
     filename: '[name].js',
   },
 
   plugins: [
+    ...(baseConfig.plugins ?? []),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -30,6 +33,6 @@ const extConfig = merge(baseConfig, {
       ],
     }),
   ],
-});
+};
 
 module.exports = extConfig;
