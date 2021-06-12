@@ -7,10 +7,7 @@ import {
 } from '../../common/js/util'
 import { loadConfig } from '../js/repository'
 import { Container } from '../templates/Container'
-import {
-  isYTMTitle,
-  parseYTMTitle,
-} from '../js/parser'
+import { isYTMTitle, parseYTMTitle } from '../js/parser'
 
 type Props = {
   params: {

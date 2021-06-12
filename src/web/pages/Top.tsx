@@ -61,10 +61,7 @@ export function Top() {
       <div className="welcome">
         <img src="/img/logo.svg" alt="アプリのロゴ" />
         <h1>#NowPlaying for Google Play Music</h1>
-        <p>
-          It's tools to share music playing on Youtube Music
-          to SNS.
-        </p>
+        <p>It's tools to share music playing on Youtube Music to SNS.</p>
         {installed && (
           <a className="button" href="/config">
             設定を変更
