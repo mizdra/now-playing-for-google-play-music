@@ -17,8 +17,10 @@
     "lint:tsc": "tsc --noEmit",
     "lint:prettier": "prettier --check ."
   },
+  "prettier": "@mizdra/prettier-config-mizdra",
   "renovate": "github>mizdra/renovate-config-mizdra",
   "devDependencies": {
+    "@mizdra/prettier-config-mizdra": "^0.3.0",
     "@types/chrome": "^0.0.145",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
