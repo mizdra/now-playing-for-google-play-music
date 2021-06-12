@@ -17,6 +17,7 @@
     "check:tsc": "tsc --noEmit",
     "check:prettier": "prettier --check 'src/**/*.{js,ts,tsx,css,html}'"
   },
+  "renovate": "github>mizdra/renovate-config-mizdra",
   "devDependencies": {
     "@types/chrome": "^0.0.145",
     "@types/react": "^17.0.11",
