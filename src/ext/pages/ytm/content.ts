@@ -21,14 +21,35 @@ function insertShareButton() {
   const rightControlsButtons = document.querySelector('ytmusic-player-bar .right-controls-buttons')!; // 右下のツールボックス
 
   // 共有ボタンを作成
-  const shareButton = document.createElement('paper-icon-button');
-  shareButton.setAttribute('icon', 'reply');
-  shareButton.setAttribute('id', 'now-playing-for-google-play-music__share-button');
+  const shareButton = document.createElement('tp-yt-paper-icon-button');
+  shareButton.setAttribute('class', 'share style-scope ytmusic-player-bar');
+  shareButton.setAttribute('icon', 'yt-icons:share');
   shareButton.setAttribute('title', 'Share music to SNS');
+  shareButton.setAttribute('aria-label', 'Share music to SNS');
+  shareButton.setAttribute('role', 'button');
+  shareButton.setAttribute('tabindex', '0');
+  shareButton.setAttribute('aria-disabled', 'false');
   shareButton.addEventListener('click', () => share());
 
   // 音量調整ボタンとキューボタンの間に挿入
   rightControlsButtons.appendChild(shareButton);
+
+  const expandingMenu = document.querySelector('#expanding-menu')!; // 画面幅が小さい時に表示されるメニュー
+
+  const expandShareButton = document.createElement('tp-yt-paper-icon-button');
+  expandShareButton.setAttribute('id', 'expand-share');
+  expandShareButton.setAttribute('class', 'expand-share style-scope ytmusic-player-bar');
+  expandShareButton.setAttribute('slot', 'elements');
+  expandShareButton.setAttribute('icon', 'yt-icons:share');
+  expandShareButton.setAttribute('title', 'Share music to SNS');
+  expandShareButton.setAttribute('aria-label', 'Share music to SNS');
+  expandShareButton.setAttribute('role', 'button');
+  expandShareButton.setAttribute('tabindex', '0');
+  expandShareButton.setAttribute('aria-disabled', 'false');
+  expandShareButton.addEventListener('click', () => share());
+
+  // expanding-menu の最後に挿入
+  expandingMenu.appendChild(expandShareButton);
 }
 
 // プレイヤーが読み込まれるまで待機する
