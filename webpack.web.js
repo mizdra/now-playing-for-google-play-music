@@ -1,5 +1,4 @@
 const { join } = require('path');
-const { merge } = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
@@ -7,16 +6,20 @@ const { DefinePlugin } = require('webpack');
 
 const { staticFileExtensions, commonSrcPath, webSrcPath, webDistPath, baseConfig } = require('./webpack.base');
 
-const webConfig = merge(baseConfig, {
+const webConfig = {
+  ...baseConfig,
   entry: {
+    ...(baseConfig.entry ?? {}),
     app: [join(webSrcPath, 'index.tsx')],
   },
   output: {
+    ...(baseConfig.output ?? {}),
     path: webDistPath,
     filename: '[name].js',
   },
 
   plugins: [
+    ...(baseConfig.plugins ?? []),
     new HtmlWebpackPlugin({
       filename: join(webDistPath, 'index.html'),
       template: join(webSrcPath, 'index.html'),
@@ -57,12 +60,14 @@ const webConfig = merge(baseConfig, {
   ],
 
   resolve: {
+    ...(baseConfig.resolve ?? {}),
     fallback: { path: require.resolve('path-browserify') },
   },
 
   devServer: {
+    ...(baseConfig.devServer ?? {}),
     historyApiFallback: true,
   },
-});
+};
 
 module.exports = webConfig;
