@@ -15,7 +15,7 @@
     "dev:web": "webpack-cli serve --config webpack.web.js --mode development",
     "lint": "run-s -c lint:*",
     "lint:tsc": "tsc --noEmit",
-    "lint:prettier": "prettier --check 'src/**/*.{js,ts,tsx,css,html}'"
+    "lint:prettier": "prettier --check ."
   },
   "renovate": "github>mizdra/renovate-config-mizdra",
   "devDependencies": {
