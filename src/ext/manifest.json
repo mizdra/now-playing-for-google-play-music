@@ -6,6 +6,12 @@
   "author": "mizdra",
   "homepage_url": "https://now-playing-for-gpm.mizdra.net",
   "permissions": ["storage"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "now-playing-for-google-play-music@webextension.mizdra.net",
+      "strict_min_version": "57.0"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["https://music.youtube.com/*"],
