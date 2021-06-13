@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "build": "run-s -c build:*",
-    "build:ext": "webpack --config webpack.ext.js --mode production",
+    "build:ext": "webpack --config webpack.ext.js --mode development",
     "postbuild:ext": "web-ext lint  --config .web-ext-config.js",
-    "build:web": "webpack --config webpack.web.js --mode production",
+    "build:web": "webpack --config webpack.web.js --mode development",
     "package": "run-s -c build:ext package:*",
     "package:web-ext": "web-ext build --config .web-ext-config.js",
     "package:git-archive": "git archive HEAD -o source.zip",
