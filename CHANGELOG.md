@@ -1,3 +1,15 @@
+<a name="v1.3.0"></a>
+
+## [v1.3.0] - 2021-06-14
+
+### Bug Fixes
+
+- Fix the problem of share button not displaying ([#224](https://github.com/mizdra/now-playing-for-google-play-music/pull/224))
+
+### BREAKING CHANGES
+
+- Drop support of Google Play Music 😭 ([#214](https://github.com/mizdra/now-playing-for-google-play-music/pull/214))
+
 <a name="v1.2.0"></a>
 
 ## [v1.2.0] - 2019-12-15
@@ -71,6 +83,7 @@
 - implement share button
 - implement sharing music
 
+[v1.3.0]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/mizdra/now-playing-for-google-play-music/compare/v1.0.1...v1.1.0
