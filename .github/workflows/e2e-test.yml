@@ -28,3 +28,17 @@ jobs:
       # ref: https://github.com/microsoft/playwright-github-action#run-in-headful-mode
       - name: yarn run test
         run: xvfb-run --auto-servernum -- yarn run test
+
+      - uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: e2e-dist
+          path: e2e-dist
+
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ github.event_name == 'schedule' && always() }}

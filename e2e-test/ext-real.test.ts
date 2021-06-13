@@ -5,17 +5,21 @@ import { renderText, renderURL } from '../src/common/js/util';
  * @file 拡張機能の E2E テスト。mock などは一切使わず、`--load-extension` で拡張機能ごと読み込ませてテストしている。
  */
 
+beforeAll(async () => {
+  await context.tracing.start({ screenshots: true, snapshots: true });
+});
+
 beforeEach(async () => {
   // 何故か毎回 page を作り直さないと上手く動かないので作り直す
   await jestPlaywright.resetPage();
 });
 
 afterAll(async () => {
+  await context.tracing.stop({ path: 'e2e-dist/trace.zip' });
   // 何故か手動で close しないと jest が終了しないので close する
   await page.close();
   await context.close();
 });
-
 test('共有ボタンが表示される', async () => {
   // 適当な曲の再生ページにアクセス
   await page.goto('https://music.youtube.com/watch?v=v_L248Ibozg');
