@@ -1,35 +1,6 @@
+// 🙏 "Solution Style" tsconfig.json 🙏
+// ref: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html#support-for-solution-style-tsconfigjson-files
 {
-  "include": ["./src/**/*"],
-  "exclude": ["./.git", "./node_modules"],
-  "compilerOptions": {
-    /* Basic Options */
-    // "outDir": "./dist",
-    "target": "es2018",
-    "lib": ["es2018", "esnext.asynciterable", "dom"],
-    "declaration": false,
-
-    /* Extension */
-    "jsx": "react",
-    // "emitDecoratorMetadata": true,
-    // "experimentalDecorators": true,
-
-    /* Module Options */
-    "module": "es2015",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-
-    /* Strict Type-Checking Options */
-    "strict": true,
-    // "allowJs": true,
-
-    /* Helper Options */
-    "noEmitHelpers": true,
-    "importHelpers": true,
-
-    /* Debug Options */
-    "sourceMap": true,
-    "pretty": true,
-    "locale": "ja"
-  }
+  "files": [],
+  "references": [{ "path": "./tsconfig.src.json" }, { "path": "./tsconfig.test.json" }]
 }

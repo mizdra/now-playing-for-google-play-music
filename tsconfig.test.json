@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["src/**/*", "e2e-test/**/*"],
+  "files": ["node_modules/jest-playwright-preset/types/global.d.ts", "node_modules/expect-playwright/global.d.ts"],
+  "compilerOptions": {}
+}

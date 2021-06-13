@@ -22,7 +22,7 @@ const baseConfig = {
         loader: 'ts-loader',
         options: {
           transpileOnly: true,
-          configFile: join(rootPath, 'tsconfig.json'),
+          configFile: join(rootPath, 'tsconfig.src.json'),
         },
       },
       {

@@ -22,6 +22,7 @@ function insertShareButton() {
 
   // 共有ボタンを作成
   const shareButton = document.createElement('tp-yt-paper-icon-button');
+  shareButton.setAttribute('data-testid', 'share-button');
   shareButton.setAttribute('class', 'share style-scope ytmusic-player-bar');
   shareButton.setAttribute('icon', 'yt-icons:share');
   shareButton.setAttribute('title', 'Share music to SNS');
@@ -37,6 +38,7 @@ function insertShareButton() {
   const expandingMenu = document.querySelector('#expanding-menu')!; // 画面幅が小さい時に表示されるメニュー
 
   const expandShareButton = document.createElement('tp-yt-paper-icon-button');
+  expandShareButton.setAttribute('data-testid', 'expand-share-button');
   expandShareButton.setAttribute('id', 'expand-share');
   expandShareButton.setAttribute('class', 'expand-share style-scope ytmusic-player-bar');
   expandShareButton.setAttribute('slot', 'elements');
