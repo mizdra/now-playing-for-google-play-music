@@ -12,6 +12,7 @@ beforeEach(async () => {
 
 afterAll(async () => {
   // 何故か手動で close しないと jest が終了しないので close する
+  await page.close();
   await context.close();
 });
 
@@ -32,7 +33,7 @@ test('共有ボタンが表示される', async () => {
   expect(await shareButton.isVisible()).toEqual(false);
   expect(await expandShareSutton.isVisible()).toEqual(false);
 
-  await page.hover('[aria-label="プレーヤーのコントロール バーを表示"]');
+  await page.hover('.expand-button');
   expect(await shareButton.isVisible()).toEqual(false);
   expect(await expandShareSutton.isVisible()).toEqual(true);
 });
@@ -55,4 +56,5 @@ test('共有ボタンを押すと Twitter intent が開く', async () => {
   });
   const url = renderURL(text, DEFAULT_HASHTAGS);
   expect(newPage.url()).toEqual(url);
+  await newPage.close();
 });
