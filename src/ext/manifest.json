@@ -8,7 +8,7 @@
   "permissions": ["storage"],
   "browser_specific_settings": {
     "gecko": {
-      "id": "now-playing-for-google-play-music@webextension.mizdra.net",
+      "id": "now-playing-for-google-play-music@mizdra.net",
       "strict_min_version": "57.0"
     }
   },
