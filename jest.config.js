@@ -16,6 +16,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.test.json',
     },
   },
+  setupFilesAfterEnv: ['<rootDir>/e2e-test/jest.setup.ts'],
   preset: 'jest-playwright-preset',
   testEnvironmentOptions: {
     /** @type import('jest-playwright-preset').JestPlaywrightConfig */
@@ -29,9 +30,6 @@ module.exports = {
         headless: false,
         slowMo: 500,
         args: [`--disable-extensions-except=${extensionDir}`, `--load-extension=${extensionDir}`],
-      },
-      contextOptions: {
-        locale: 'ja_JP',
       },
     },
   },

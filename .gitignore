@@ -96,3 +96,4 @@ typings/
 /web-ext-artifacts
 /source.zip
 /e2e-dist
+**/__image_snapshots__/__diff_output__
