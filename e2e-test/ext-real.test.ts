@@ -36,17 +36,29 @@ test('共有ボタンが表示される', async () => {
   await page.setViewportSize({ width: 1150, height: 800 });
   expect(await shareButton.isVisible()).toEqual(true);
   expect(await expandShareSutton.isVisible()).toEqual(false);
-  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot();
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot({
+    comparisonMethod: 'ssim',
+    failureThreshold: 0.01,
+    failureThresholdType: 'percent',
+  });
 
   await page.setViewportSize({ width: 1149, height: 800 });
   expect(await shareButton.isVisible()).toEqual(false);
   expect(await expandShareSutton.isVisible()).toEqual(false);
-  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot();
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot({
+    comparisonMethod: 'ssim',
+    failureThreshold: 0.01,
+    failureThresholdType: 'percent',
+  });
 
   await page.hover('.expand-button');
   expect(await shareButton.isVisible()).toEqual(false);
   expect(await expandShareSutton.isVisible()).toEqual(true);
-  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot();
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot({
+    comparisonMethod: 'ssim',
+    failureThreshold: 0.01,
+    failureThresholdType: 'percent',
+  });
 });
 
 test('共有ボタンを押すと Twitter intent が開く', async () => {
