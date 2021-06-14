@@ -41,9 +41,9 @@ test('共有ボタンが表示される', async () => {
   expect(await expandShareSutton.isVisible()).toEqual(false);
   expect(await rightControls?.screenshot()).toMatchImageSnapshot();
 
-  await page.hover('.expand-button');
-  expect(await shareButton.isVisible()).toEqual(false);
-  expect(await expandShareSutton.isVisible()).toEqual(true);
+  // await page.hover('.expand-button');
+  // expect(await shareButton.isVisible()).toEqual(false);
+  // expect(await expandShareSutton.isVisible()).toEqual(true);
   expect(await rightControls?.screenshot()).toMatchImageSnapshot();
 });
 
