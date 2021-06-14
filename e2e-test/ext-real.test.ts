@@ -5,6 +5,13 @@ import { renderText, renderURL } from '../src/common/js/util';
  * @file 拡張機能の E2E テスト。mock などは一切使わず、`--load-extension` で拡張機能ごと読み込ませてテストしている。
  */
 
+// ref: https://github.com/americanexpress/jest-image-snapshot#recommendations-when-using-ssim-comparison
+const IMAGE_SNAPSHOT_OPTIONS = {
+  comparisonMethod: 'ssim',
+  failureThreshold: 0.01,
+  failureThresholdType: 'percent',
+} as const;
+
 beforeAll(async () => {
   await context.tracing.start({ screenshots: true, snapshots: true });
   await context.addCookies([{ name: 'PREF', value: 'hl=ja', domain: '.youtube.com', path: '/' }]);
@@ -36,29 +43,17 @@ test('共有ボタンが表示される', async () => {
   await page.setViewportSize({ width: 1150, height: 800 });
   expect(await shareButton.isVisible()).toEqual(true);
   expect(await expandShareSutton.isVisible()).toEqual(false);
-  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot({
-    comparisonMethod: 'ssim',
-    failureThreshold: 0.01,
-    failureThresholdType: 'percent',
-  });
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot(IMAGE_SNAPSHOT_OPTIONS);
 
   await page.setViewportSize({ width: 1149, height: 800 });
   expect(await shareButton.isVisible()).toEqual(false);
   expect(await expandShareSutton.isVisible()).toEqual(false);
-  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot({
-    comparisonMethod: 'ssim',
-    failureThreshold: 0.01,
-    failureThresholdType: 'percent',
-  });
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot(IMAGE_SNAPSHOT_OPTIONS);
 
   await page.hover('.expand-button');
   expect(await shareButton.isVisible()).toEqual(false);
   expect(await expandShareSutton.isVisible()).toEqual(true);
-  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot({
-    comparisonMethod: 'ssim',
-    failureThreshold: 0.01,
-    failureThresholdType: 'percent',
-  });
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot(IMAGE_SNAPSHOT_OPTIONS);
 });
 
 test('共有ボタンを押すと Twitter intent が開く', async () => {
