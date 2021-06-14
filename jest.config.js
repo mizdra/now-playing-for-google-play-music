@@ -31,9 +31,6 @@ module.exports = {
         slowMo: 500,
         args: [`--disable-extensions-except=${extensionDir}`, `--load-extension=${extensionDir}`],
       },
-      contextOptions: {
-        locale: 'ja_JP',
-      },
     },
   },
   testMatch: ['**/*.test.(ts|tsx)'],

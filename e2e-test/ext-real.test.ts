@@ -7,6 +7,7 @@ import { renderText, renderURL } from '../src/common/js/util';
 
 beforeAll(async () => {
   await context.tracing.start({ screenshots: true, snapshots: true });
+  await context.addCookies([{ name: 'PREF', value: 'hl=ja', domain: '.youtube.com', path: '/' }]);
 });
 
 beforeEach(async () => {
