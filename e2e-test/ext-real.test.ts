@@ -28,23 +28,25 @@ test('共有ボタンが表示される', async () => {
   // 各種ボタンが DOM に挿入されるまで待機
   const shareButton = await page.waitForSelector('[data-testid="share-button"]', { state: 'attached' });
   const expandShareSutton = await page.waitForSelector('[data-testid="expand-share-button"]', { state: 'attached' });
-  const rightControls = await page.$('#right-controls');
+  // 本当は #right-controls でスクリーンショットを撮りたいけど、#right-controls で撮るとシークバーが写り込んでしまい、
+  // 音楽のロード状況によって描画結果が大きく変わってしまう。そのためここでは .right-controls-buttons を対象にしている。
+  const rightControlsButtons = await page.$('.right-controls-buttons');
 
   // 画面幅に応じて要素の表示・非表示が切り替わることを assert
   await page.setViewportSize({ width: 1150, height: 800 });
   expect(await shareButton.isVisible()).toEqual(true);
   expect(await expandShareSutton.isVisible()).toEqual(false);
-  expect(await rightControls?.screenshot()).toMatchImageSnapshot();
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot();
 
   await page.setViewportSize({ width: 1149, height: 800 });
   expect(await shareButton.isVisible()).toEqual(false);
   expect(await expandShareSutton.isVisible()).toEqual(false);
-  expect(await rightControls?.screenshot()).toMatchImageSnapshot();
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot();
 
-  // await page.hover('.expand-button');
-  // expect(await shareButton.isVisible()).toEqual(false);
-  // expect(await expandShareSutton.isVisible()).toEqual(true);
-  expect(await rightControls?.screenshot()).toMatchImageSnapshot();
+  await page.hover('.expand-button');
+  expect(await shareButton.isVisible()).toEqual(false);
+  expect(await expandShareSutton.isVisible()).toEqual(true);
+  expect(await rightControlsButtons?.screenshot()).toMatchImageSnapshot();
 });
 
 test('共有ボタンを押すと Twitter intent が開く', async () => {
