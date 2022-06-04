@@ -23,7 +23,7 @@
     "test": "jest"
   },
   "prettier": "@mizdra/prettier-config-mizdra",
-  "renovate": "github>mizdra/renovate-config-mizdra",
+  "renovate": "github>mizdra/renovate-config-mizdra:default.json5",
   "devDependencies": {
     "@mizdra/prettier-config-mizdra": "^0.3.0",
     "@types/chrome": "^0.0.145",
