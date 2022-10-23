@@ -5,8 +5,7 @@ const YTM_TITLE_TAIL = ' をご覧ください';
 
 export function isYTMTitle(titleParam: string) {
   return
-    titleParam.startsWith(YTM_TITLE_HEAD)
-    && titleParam.endsWith(YTM_TITLE_TAIL);
+    titleParam.startsWith(YTM_TITLE_HEAD) && titleParam.endsWith(YTM_TITLE_TAIL);
 }
 
 // Web Share Target API の title パラメータをパースし, 曲情報に変換する.
