@@ -6,10 +6,11 @@
   "author": "mizdra",
   "homepage_url": "https://now-playing-for-gpm.mizdra.net",
   "permissions": ["storage"],
+  "host_permissions": ["https://music.youtube.com/*"],
   "browser_specific_settings": {
     "gecko": {
       "id": "now-playing-for-google-play-music@mizdra.net",
-      "strict_min_version": "57.0"
+      "strict_min_version": "109.0"
     }
   },
   "content_scripts": [
@@ -28,5 +29,5 @@
     "96": "img/logo-96.png",
     "128": "img/logo-128.png"
   },
-  "manifest_version": 2
+  "manifest_version": 3
 }
