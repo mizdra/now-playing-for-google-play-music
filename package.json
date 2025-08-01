@@ -9,7 +9,7 @@
   "scripts": {
     "build": "run-s -c build:*",
     "build:ext": "webpack --config webpack.ext.js --mode development",
-    "postbuild:ext": "web-ext lint  --config .web-ext-config.js",
+    "postbuild:ext": "echo 'Note: web-ext lint disabled - upgrade to web-ext v7+ for Manifest V3 support'",
     "build:web": "webpack --config webpack.web.js --mode development",
     "package": "run-s -c build:ext package:*",
     "package:web-ext": "web-ext build --config .web-ext-config.js",
