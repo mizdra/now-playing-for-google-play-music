@@ -1,3 +1,9 @@
+## Announcement (2026/11/4)
+
+I no longer have the energy to maintain this extension, so it has been abandoned. Please consider switching to other extensions or alternative solutions. I also recommend my bookmarklet :)
+
+- https://let.hatelabo.jp/mizdra/let/k_WsxIeCgKAA
+
 <div align="center">
 
 <a href="https://now-playing-for-gpm.mizdra.net" title="#NowPlaying for Google Play Music" target="_blank" rel="noopener">
